@@ -1,3 +1,3 @@
 # Ohjelmistotekniikka, harjoitustyö
 
-Tänne tulee ohjelmistotekniikan harjoitustyö, *luultavasti* joku _peli_.
+Tänne tulee ohjelmistotekniikan harjoitustyö, **luultavasti** joku *peli*.
