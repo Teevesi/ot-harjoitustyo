@@ -9,6 +9,8 @@ class Game:
     def __init__(self, screen_width, screen_height):
         pygame.init()
         self.screen = pygame.display.set_mode((screen_width, screen_height))
+        self.screen_width = screen_width
+        self.screen_height = screen_height
         pygame.display.set_caption("Slime Harvester")
         self.clock = pygame.time.Clock()
         self.bg_color = bg_color
@@ -42,6 +44,5 @@ class Game:
 
 
     def start_game(self):
-        self.enemy_path.get_path(self.enemy_path.map_data)
         self.running = True
-        self.game_loop()
+        self.enemy_path.get_path(self.enemy_path.map_data)

@@ -1,8 +1,11 @@
+import os
 
 class EnemyPath:
 
     def __init__(self, map_path, tile_size):
-        self.map_data = self.load_map(map_path)
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        full_path = os.path.join(base_dir, map_path)
+        self.map_data = self.load_map(full_path)
         self.tile_size = tile_size
         self.path = self.get_path(self.map_data)
 
