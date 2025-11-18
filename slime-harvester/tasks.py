@@ -1,0 +1,18 @@
+from invoke import task
+
+
+@task
+def start(ctx):
+
+    ctx.run("python src/index.py")
+
+
+@task
+def test(ctx):
+    ctx.run("pytest src/tests")
+
+
+@task
+def coverage_report(ctx):
+    ctx.run("coverage run -m pytest src/tests")
+    ctx.run("coverage report -m")
