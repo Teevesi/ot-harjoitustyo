@@ -5,3 +5,5 @@ Tänne tulee ohjelmistotekniikan harjoitustyö, **yksinkertainen** *tower-defenc
 [laskarit](https://github.com/Teevesi/ot-harjoitustyo/tree/main/laskarit)
 
 [työaikakirjanpito](https://github.com/Teevesi/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
+
+[changelog](https://github.com/Teevesi/ot-harjoitustyo/blob/main/slime-harvester/dokumentaatio/changelob.md)
