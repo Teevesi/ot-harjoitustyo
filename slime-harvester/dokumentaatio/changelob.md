@@ -5,4 +5,4 @@
 - Lisätty TileMap luokka, joka luo kartan, Game luokka, jossa on pelin pääsilmukka, 
 - Lisätty Enemy luokka, joka hoitaa vihollisen liikkeet yms.
 - Lisätty EnemyPath luokka, joka etsii vihollisen reitin
-- Testit testaamaan pelin käynnistymistä lisätty, mutta ei toimi vielä.
+- Testit testaamaan pelin käynnistymistä lisätty.
