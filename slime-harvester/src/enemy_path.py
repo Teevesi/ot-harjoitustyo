@@ -1,7 +1,7 @@
 import os
 
 class EnemyPath:
-
+#AI generoima alkaa (vähän itse muokattu)
     def __init__(self, map_path, tile_size):
         base_dir = os.path.dirname(os.path.abspath(__file__))
         full_path = os.path.join(base_dir, map_path)
@@ -14,7 +14,7 @@ class EnemyPath:
             rows = [line.strip() for line in f.readlines()]
         return rows
     
-#Ai generoima alkaa
+
     def get_path(self, map_data):
         # Collect all '!' tile centers (in pixels)
         points = []
@@ -57,4 +57,4 @@ class EnemyPath:
             current = remaining.pop(best_idx)
             ordered.append(current)
         return ordered
-#Ai generoima loppuu
+#AI generoima loppuu

@@ -2,6 +2,7 @@ import pygame
 import math
 import os
 
+#AI generoima alkaa
 class Enemy:
     def __init__(self, path, enemy_speed):
         base_dir = os.path.dirname(__file__)
@@ -13,7 +14,9 @@ class Enemy:
 
         self.x, self.y = path[0]    # start at first point (center)
         self.index = 1 if len(path) > 1 else 0  # current target index
+        
         self.image = pygame.image.load(os.path.join(base_dir, "assets", "enemies", "enemy_red.png"))
+        self.rect = self.image.get_rect(center=(self.x, self.y))
     
     def update(self):
         # If at end of path → enemy finished
@@ -41,7 +44,6 @@ class Enemy:
         return False
 
     def draw(self, screen):
-        # Center image on (self.x, self.y)
-        w = self.image.get_width()
-        h = self.image.get_height()
-        screen.blit(self.image, (self.x - w // 2, self.y - h // 2))
+        self.rect.center = (self.x, self.y)
+        screen.blit(self.image, self.rect)
+#AI generoima loppuu

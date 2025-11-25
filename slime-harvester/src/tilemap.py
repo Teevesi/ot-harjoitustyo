@@ -3,7 +3,7 @@ import pygame
 
 tile_size = 32
 
-
+#AI generoima alkaa
 class TileMap:
     def __init__(self, file_path):
         base_dir = os.path.dirname(__file__)
