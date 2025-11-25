@@ -13,12 +13,19 @@ class EnemyPath:
         with open(path) as f:
             rows = [line.strip() for line in f.readlines()]
         return rows
-
+    
+#Ai generoima alkaa
     def get_path(self, map_data):
         # Collect all '!' tile centers (in pixels)
         points = []
         for y, row in enumerate(map_data):
             for x, tile in enumerate(row):
+                if tile == "S":
+                    # Start point
+                    px = x * self.tile_size + self.tile_size // 2
+                    py = y * self.tile_size + self.tile_size // 2
+                    start = (px, py)
+
                 if tile == "!":
                     px = x * self.tile_size + self.tile_size // 2
                     py = y * self.tile_size + self.tile_size // 2
@@ -29,10 +36,9 @@ class EnemyPath:
             return points
 
         # Greedy nearest-neighbor ordering: start from the first found point
-        ordered = []
+        ordered = [start]
         remaining = points.copy()
-        current = remaining.pop(0)
-        ordered.append(current)
+        current = start
 
         while remaining:
             # find the remaining point closest to current
@@ -51,3 +57,4 @@ class EnemyPath:
             current = remaining.pop(best_idx)
             ordered.append(current)
         return ordered
+#Ai generoima loppuu

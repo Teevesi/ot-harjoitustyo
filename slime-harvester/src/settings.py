@@ -6,3 +6,4 @@ fps = 60
 bg_color = (30, 30, 30)
 map_name = "maps/map2.txt"
 enemy_speed = 2
+max_health = 100
