@@ -6,3 +6,13 @@
 - Lisätty Enemy luokka, joka hoitaa vihollisen liikkeet yms.
 - Lisätty EnemyPath luokka, joka etsii vihollisen reitin
 - Testit testaamaan pelin käynnistymistä lisätty.
+
+## viikko 4
+
+- Kartalle ilmestyy nyt jatkuvasti vihollisia
+- Puolustuksen voi laittaa ruutuun
+- Puolustus ampuu luoteja, jotka tuhoaa viholliset osumasta
+- Lisätty erillinen UserInterFace luoukka
+- Lisätty PlayerStats luokka
+- Lisätty elämät, jotka alenee, jos vihollinen pääsee kartan läpi
+- Pelin häviää jos elämät loppuu

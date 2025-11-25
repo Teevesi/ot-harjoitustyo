@@ -8,4 +8,5 @@
 | 18.11. | 2 | testien teko, bugfix |
 | 24.11. | 3 | toiminnallisuutta |
 | 25.11. | 4 | puolustuksia |
-| yht. | 15 | |
+| 25.11. | 1 | pylint code |
+| yht. | 16 | |
