@@ -6,11 +6,11 @@ Sovellus on tower-defence-peli, jonka tarkoituksena on selvitä mahdollisimman p
 
 ## Perusversion toiminnallisuus
 
-- Pelissä on kartta, jonka läpi kulkee vihollisia
-- Viholliset vaikeutuu pelin edetessä
+- Pelissä on kartta, jonka läpi kulkee vihollisia :white_check_mark:
+- Viholliset vaikeutuu pelin edetessä 
 - Pelissä on puolustuksia, joilla on hinta
-- Pelaaja voi rakentaa puolustuksia haluamaansa paikkaan kartalle
-- Pelin häviää, jos liian paljon vihollisia pääsee kartan läpi
+- Pelaaja voi rakentaa puolustuksia haluamaansa paikkaan kartalle :white_check_mark:
+- Pelin häviää, jos liian paljon vihollisia pääsee kartan läpi :white_check_mark:
 
 ## Jatkokehitysideoita
 
