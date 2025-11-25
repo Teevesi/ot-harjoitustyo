@@ -1,7 +1,7 @@
 import os
 import pygame
 
-tile_size = 32
+from settings import TILE_SIZE
 
 #AI generoima alkaa
 class TileMap:
@@ -19,14 +19,14 @@ class TileMap:
         }
 
         self.map_data = []
-        with open(file_path, 'r') as f:
+        with open(file_path, 'r', encoding="utf-8") as f:
             for line in f:
                 self.map_data.append(list(line.strip()))
 
         # Preload images scaled to tile size
         for key in self.tile_images:
             self.tile_images[key] = pygame.transform.scale(
-                self.tile_images[key], (tile_size, tile_size)
+                self.tile_images[key], (TILE_SIZE, TILE_SIZE)
             )
 
     def draw(self, surface):
@@ -35,5 +35,5 @@ class TileMap:
                 tile = self.tile_images[tile_char]
                 surface.blit(
                     tile,
-                    (col_index * tile_size, row_index * tile_size)
+                    (col_index * TILE_SIZE, row_index * TILE_SIZE)
                 )

@@ -1,8 +1,6 @@
 import unittest
 from game import Game
 
-
-
 class TestGame(unittest.TestCase):
     def setUp(self):
         self.game = Game(960, 640)
@@ -11,7 +9,6 @@ class TestGame(unittest.TestCase):
         self.assertEqual(self.game.screen_width, 960)
         self.assertEqual(self.game.screen_height, 640)
         self.assertFalse(self.game.running)
-
 
     def test_start_game_sets_running(self):
         self.game.start_game()

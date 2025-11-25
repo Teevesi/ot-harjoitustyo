@@ -1,10 +1,10 @@
 
 
-screen_width = 960
-screen_height = 640
-fps = 60
-bg_color = (30, 30, 30)
-map_name = "maps/map2.txt"
-enemy_speed = 10
-max_health = 100
-tile_size = 32
+SCREEN_WIDTH = 960
+SCREEN_HEIGHT = 640
+FPS = 60
+BG_COLOR = (30, 30, 30)
+MAP_NAME = "maps/map2.txt"
+ENEMY_SPEED = 10
+MAX_HEALTH = 100
+TILE_SIZE = 32

@@ -1,25 +1,22 @@
 from enemy_movement import Enemy
 
 
-
 class Timer():
     def __init__(self):
         self.timer = 0
-
 
     def update(self):
         self.timer += 1
 
     def get_timer(self):
         return self.timer//60
-    
+
     def get_real_timer(self):
         return self.timer
 
-
 class EnemyTiming:
     def __init__(self):
-        self.spawn_interval = 60 
+        self.spawn_interval = 60
         self.last_spawn_time = 0
 
     def can_spawn(self, current_time):
@@ -27,7 +24,7 @@ class EnemyTiming:
             self.last_spawn_time = current_time
             return True
         return False
-    
+
     def reset(self):
         self.last_spawn_time = 0
 

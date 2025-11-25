@@ -7,4 +7,5 @@
 | 17.11. | 4 | työn aloitus |
 | 18.11. | 2 | testien teko, bugfix |
 | 24.11. | 3 | toiminnallisuutta |
-| yht. | 11 | |
+| 25.11. | 4 | puolustuksia |
+| yht. | 15 | |

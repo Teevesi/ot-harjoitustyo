@@ -1,16 +1,18 @@
-import pygame, os
-import math
+import os
+import pygame
+
 
 class Projectile:
 
-    def __init__(self, x, y, direction, speed, damage):
+    def __init__(self, position, direction, speed, damage):
         base_dir = os.path.dirname(__file__)
-        self.x = x
-        self.y = y
+        self.x = position[0]
+        self.y = position[1]
         self.direction = direction
         self.speed = speed
         self.damage = damage
-        self.image = pygame.image.load(os.path.join(base_dir, "assets", "projectiles", "projectile1.png"))
+        image_path = os.path.join(base_dir, "assets", "projectiles", "projectile1.png")
+        self.image = pygame.image.load(image_path)
         self.rect = self.image.get_rect(center=(self.x, self.y))
 
     def update(self):

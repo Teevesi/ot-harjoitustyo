@@ -10,10 +10,9 @@ class EnemyPath:
         self.path = self.get_path(self.map_data)
 
     def load_map(self, path):
-        with open(path) as f:
+        with open(path, encoding="utf-8") as f:
             rows = [line.strip() for line in f.readlines()]
         return rows
-    
 
     def get_path(self, map_data):
         # Collect all '!' tile centers (in pixels)
