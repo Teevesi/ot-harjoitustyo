@@ -9,4 +9,5 @@
 | 24.11. | 3 | toiminnallisuutta |
 | 25.11. | 4 | puolustuksia |
 | 25.11. | 1 | pylint code |
-| yht. | 16 | |
+| 25.11. | 1 | repositorion siivous |
+| yht. | 17 | |
