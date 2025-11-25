@@ -19,3 +19,7 @@ class UserInterface():
     def draw(self, screen):
         screen.blit(self.health_background(), (7, 7))
         screen.blit(self.health(), (10, 10))
+
+        font = pygame.font.SysFont(None, 30)
+        towerinfo = font.render("Press 't' to place tower", 1, (20, 255, 0))
+        screen.blit(towerinfo, (160,10))
