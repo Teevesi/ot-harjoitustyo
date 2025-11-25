@@ -8,4 +8,4 @@ class HealthBar():
         self.health = max(0, self.health - amount)
 
     def current_health(self):
-        return self.current_health
+        return self.health

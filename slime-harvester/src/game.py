@@ -40,7 +40,7 @@ class Game:
             self.enemy_manager.add_enemies()
             self.enemy_manager.update_enemies()
 
-            self.tower_manager.update_towers(self.timer.get_real_timer())
+            self.tower_manager.update_towers()
 
             for projectile in self.projectiles:
                 if projectile:
@@ -79,7 +79,8 @@ class Game:
         self.enemy_path.get_path(self.enemy_path.map_data)
 
     def check_game_over(self):
-        if self.hp_bar.current_health <= 0:
+        hp = self.hp_bar.current_health()
+        if hp <= 0:
             return True
         return False
 

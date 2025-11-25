@@ -6,7 +6,8 @@ class UserInterface():
 
     def health(self):
         font = pygame.font.SysFont(None, 30)
-        health = font.render(f"Health: {self.health_bar.current_health}", 1, (20, 255, 0))
+        hp = self.health_bar.current_health()
+        health = font.render(f"Health: {hp}", 1, (20, 255, 0))
         return health
 
     def health_background(self):
