@@ -3,7 +3,6 @@ import pygame
 
 from settings import TILE_SIZE
 
-#AI generoima alkaa
 class TileMap:
     def __init__(self, file_path):
         base_dir = os.path.dirname(__file__)
@@ -15,7 +14,14 @@ class TileMap:
             '#': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "rock.png")),
             '!': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "path.png")),
             '.': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "grass.png")),
-            'S': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "spawn_portal.png"))
+            'S': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "spawn_portal.png")),
+            'B': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "border.png")),
+            'Q': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "ui_bg_tl.png")),
+            'E': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "ui_bg_tr.png")),
+            'A': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "ui_bg_ml.png")),
+            'D': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "ui_bg_mr.png")),
+            'Z': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "ui_bg_bl.png")),
+            'C': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "ui_bg_br.png")),
         }
 
         self.map_data = []
@@ -37,3 +43,15 @@ class TileMap:
                     tile,
                     (col_index * TILE_SIZE, row_index * TILE_SIZE)
                 )
+
+    def tile_is_free(self, tile_x, tile_y):
+        if tile_y < 0 or tile_y >= len(self.map_data):
+            return False
+        if tile_x < 0 or tile_x >= len(self.map_data[0]):
+            return False
+
+        tile = self.map_data[tile_y][tile_x]
+        if tile in ['#', '.']:
+            return True
+
+        return False

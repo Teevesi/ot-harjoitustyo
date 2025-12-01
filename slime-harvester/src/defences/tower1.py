@@ -11,6 +11,7 @@ class Tower:
         self.last_shot_time = 0
         self.projectiles = []
         self.projectile_speed = 3
+        self.price = 10
 
         base_dir = os.path.dirname(__file__)
         assets_dir = os.path.join(base_dir, "..", "assets", "defences")
