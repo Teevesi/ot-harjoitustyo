@@ -12,6 +12,7 @@ from load_image import load_image
 
 class Game:
     def __init__(self, screen_width, screen_height):
+        # Jaa nämä eri paikkoihin ettei pylint valita
         pygame.init()
         self.screen = pygame.display.set_mode((screen_width, screen_height))
         self.screen_width = screen_width
