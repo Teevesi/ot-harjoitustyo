@@ -17,6 +17,10 @@ def coverage_report(ctx):
     ctx.run("coverage run -m pytest src/tests")
     ctx.run("coverage report -m")
 
+@task(name="coverage")
+def coverage_alias(ctx):
+    coverage_report(ctx)
+
 @task
 def lint(ctx):
     ctx.run("pylint src --init-hook=\"import sys; sys.path.insert(0, 'src')\"")
