@@ -9,7 +9,7 @@ class UserInterface():
         self.tower_buttons = [
             # TowerButton instances can be added here in the future
             TowerButton(load_image("defences/defence1.png"), (1028, 68), "Tower1"),
-            TowerButton(load_image("defences/defence1.png"), (1028, 132), "Tower2")
+            TowerButton(load_image("defences/defence2.png"), (1028, 132), "Tower2")
         ]
 
     def health(self):

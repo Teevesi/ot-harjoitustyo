@@ -4,7 +4,7 @@ from projectiles import Projectile
 from settings import DIRECTION_VECTORS, TOWER_CONFIG
 from load_image import load_image
 
-class Tower1:
+class Tower2:
     def __init__(self, position):
         config = TOWER_CONFIG[self.__class__.__name__]
         self.position = position
@@ -15,10 +15,9 @@ class Tower1:
         self.projectiles = []
         self.projectile_speed = config["projectile_speed"]
         self.price = config["price"]
-        self.direction = "left"
         self.projectile_image = config["projectile"]
 
-        self.image = load_image("defences/defence1.png")
+        self.image = load_image("defences/defence2.png")
 
     def can_shoot(self, frame):
         can_shoot = (frame - self.last_shot_time) >=  self.fire_rate
@@ -26,14 +25,15 @@ class Tower1:
             return True
         return False
 
-    def shoot(self, direction, frame):
+    def shoot(self, frame):
         projectiles = []
         if self.can_shoot(frame):
-            dx, dy = DIRECTION_VECTORS[direction]
-            projectile = Projectile((self.position[0], self.position[1]), (dx, dy), self.projectile_speed, self.damage, self.range, self.projectile_image)
+            for dx, dy in DIRECTION_VECTORS.values():
+                projectile = Projectile((self.position[0], self.position[1]), (dx, dy), self.projectile_speed, self.damage, self.range, self.projectile_image)
+                projectiles.append(projectile)
+
             self.last_shot_time = frame
-            projectiles.append(projectile)
-            return projectiles
+            return projectiles[:]
 
     def update(self, frame):
 
@@ -42,7 +42,9 @@ class Tower1:
 
         self.projectiles = [p for p in self.projectiles if not p.has_exceeded_range()]
 
-        self.shoot(self.direction, frame)
+        new_projectiles = self.shoot(frame)
+        if new_projectiles:
+            self.projectiles.extend(new_projectiles)
 
 
     def draw(self, screen):

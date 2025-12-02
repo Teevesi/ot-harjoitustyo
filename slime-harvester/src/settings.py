@@ -5,6 +5,24 @@ SCREEN_HEIGHT = 768
 FPS = 60
 BG_COLOR = (30, 30, 30)
 MAP_NAME = "maps/map2.txt"
-ENEMY_SPEED = 5
+ENEMY_SPEED = 3
 MAX_HEALTH = 100
 TILE_SIZE = 32
+
+DIRECTION_VECTORS = {
+    "up": (0, -1),
+    "down": (0, 1),
+    "left": (-1, 0),
+    "right": (1, 0),
+    "up_left": (-0.707, -0.707),
+    "up_right": (0.707, -0.707),
+    "down_left": (-0.707, 0.707),
+    "down_right": (0.707, 0.707)
+}
+
+
+TOWER_CONFIG = {
+    "Tower1": {"projectile":"projectiles/projectile1.png", "damage":1, "range":500, "fire_rate":60, "price":10, "projectile_speed":3},
+    "Tower2": {"projectile":"projectiles/projectile2.png", "damage":1, "range":100, "fire_rate":60, "price":30, "projectile_speed":5}
+
+}

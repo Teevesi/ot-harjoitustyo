@@ -6,7 +6,8 @@ from enemy_path import EnemyPath
 from enemy_timing import EnemyTiming, Timer
 from user_interface import UserInterface
 from player_stats import HealthBar, Currency
-from defences.tower1 import Tower
+from defences.tower1 import Tower1
+from defences.tower2 import Tower2
 from load_image import load_image
 
 class Game:
@@ -48,18 +49,26 @@ class Game:
 
             self.tower_manager.update_towers()
 
+            self.projectiles[:] = [p for p in self.projectiles if p and not p.has_exceeded_range()]
             for projectile in self.projectiles:
                 if projectile:
                     projectile.update()
                     projectile.draw(self.screen)
 
+
             #check for collisions
+            to_remove = []
             for projectile in self.projectiles:
                 for enemy in self.enemy_manager.enemies:
                     if projectile.rect.colliderect(enemy.rect):
                         self.enemy_manager.remove(enemy)
-                        self.projectiles.remove(projectile)
+                        to_remove.append(projectile)
                         self.currency.increase(1)
+                        break
+            for projectile in to_remove:
+                if projectile in self.projectiles:
+                    self.projectiles.remove(projectile)
+
 
             # draw dragged tower ghost
             if self.dragging and self.dragged_tower_image:
@@ -106,7 +115,10 @@ class Game:
                     new_tower = None
                     if self.dragged_tower_type == "Tower1":
                         if self.tilemap.tile_is_free(grid_x // TILE_SIZE, grid_y // TILE_SIZE):
-                            new_tower = Tower((grid_x, grid_y))
+                            new_tower = Tower1((grid_x, grid_y))
+                    elif self.dragged_tower_type == "Tower2":
+                        if self.tilemap.tile_is_free(grid_x // TILE_SIZE, grid_y // TILE_SIZE):
+                            new_tower = Tower2((grid_x, grid_y))
                     for tower in self.tower_manager.towers:
                         if (grid_x, grid_y) == tower.position:
                             new_tower = None
@@ -133,6 +145,8 @@ class Game:
         self.dragged_tower_image = None
         if tower_type == "Tower1":
             self.dragged_tower_image = load_image("defences/defence1.png")
+        elif tower_type == "Tower2":
+            self.dragged_tower_image = load_image("defences/defence2.png")
 
 class TowerManager:
     def __init__(self, screen, timer, projectiles, ui):
@@ -145,13 +159,18 @@ class TowerManager:
     def add_tower(self, tower):
         if self.ui.currency_stat.current_amount() >= tower.price:
             self.ui.currency_stat.decrease(tower.price)
-        self.towers.append(tower)
+            self.towers.append(tower)
 
     def update_towers(self):
         for tower in self.towers:
             tower.draw(self.screen)
             if tower.can_shoot(self.timer.get_real_timer()):
-                self.projectiles.append(tower.shoot("left", self.timer.get_real_timer()))
+                if tower.__class__.__name__ == "Tower1":
+                    new_projectiles = tower.shoot("left", self.timer.get_real_timer())
+                elif tower.__class__.__name__ == "Tower2":
+                    new_projectiles = tower.shoot(self.timer.get_real_timer())
+                if new_projectiles:
+                    self.projectiles.extend(new_projectiles)
             tower.update(self.timer.get_real_timer())
 
 class EnemyManager:

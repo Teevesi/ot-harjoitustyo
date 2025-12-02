@@ -18,9 +18,15 @@ class EnemyTiming:
     def __init__(self):
         self.spawn_interval = 60
         self.last_spawn_time = 0
+        self.min_interval = 2
+
+    def get_interval(self, current_time):
+        interval = self.spawn_interval - (current_time // 100)
+        return max(self.min_interval, interval)
 
     def can_spawn(self, current_time):
-        if current_time - self.last_spawn_time >= self.spawn_interval:
+        interval = self.get_interval(current_time)
+        if current_time - self.last_spawn_time >= interval:
             self.last_spawn_time = current_time
             return True
         return False
