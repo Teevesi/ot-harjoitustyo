@@ -19,4 +19,4 @@ def coverage_report(ctx):
 
 @task
 def lint(ctx):
-    ctx.run("pylint src")
+    ctx.run("pylint src --init-hook=\"import sys; sys.path.insert(0, 'src')\"")
