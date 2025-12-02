@@ -15,6 +15,9 @@ dependencies = [
 [tool.poetry]
 package-mode = false
 
+[tool.pylint.main]
+init-hook = "import sys; sys.path.insert(0, 'src')"
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"

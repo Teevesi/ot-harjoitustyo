@@ -25,128 +25,127 @@ class Game:
         self.hp_bar = HealthBar(MAX_HEALTH)
         self.currency = Currency(100)
         self.ui = UserInterface(self.hp_bar, self.currency)
-        self.projectiles = []
         self.enemy_path = EnemyPath(MAP_NAME, TILE_SIZE)
+        self.projectiles = []
         self.tower_manager = TowerManager(self.screen, self.timer, self.projectiles, self.ui)
         self.enemy_manager = EnemyManager(self.timer, self.enemy_path, self.screen, self.hp_bar)
         self.buttons = self.ui.tower_buttons
-        self.dragging = False
-        self.dragged_tower_type = None
-        self.dragged_tower_image = None
+        self.tower_dragging = TowerDragging(self.screen, self.tilemap, self.tower_manager)
 
     def game_loop(self):
 
         while self.running:
             self.get_events()
-            if self.check_game_over():
-                self.running = False
+            self.draw_base()
 
-            self.screen.fill(self.bg_color)
-            self.tilemap.draw(self.screen)
+            self.update_enemies_and_towers()
 
-            self.enemy_manager.add_enemies()
-            self.enemy_manager.update_enemies()
+            self.update_projectiles()
 
-            self.tower_manager.update_towers()
+            self.check_collision()
 
-            self.projectiles[:] = [p for p in self.projectiles if p and not p.has_exceeded_range()]
-            for projectile in self.projectiles:
-                if projectile:
-                    projectile.update()
-                    projectile.draw(self.screen)
-
-
-            #check for collisions
-            to_remove = []
-            for projectile in self.projectiles:
-                for enemy in self.enemy_manager.enemies:
-                    if projectile.rect.colliderect(enemy.rect):
-                        self.enemy_manager.remove(enemy)
-                        to_remove.append(projectile)
-                        self.currency.increase(1)
-                        break
-            for projectile in to_remove:
-                if projectile in self.projectiles:
-                    self.projectiles.remove(projectile)
-
-
-            # draw dragged tower ghost
-            if self.dragging and self.dragged_tower_image:
-                mouse_x, mouse_y = pygame.mouse.get_pos()
-                tile_x = (mouse_x // TILE_SIZE) * TILE_SIZE + TILE_SIZE // 2
-                tile_y = (mouse_y // TILE_SIZE) * TILE_SIZE + TILE_SIZE // 2
-                ghost_width = self.dragged_tower_image.get_width()
-                ghost_height = self.dragged_tower_image.get_height()
-                color = (0, 255, 0) if self.tilemap.tile_is_free(tile_x // TILE_SIZE, tile_y // TILE_SIZE) else (255, 0, 0)
-                for tower in self.tower_manager.towers:
-                    if (tile_x, tile_y) == tower.position:
-                        color = (255, 0, 0)
-                highlight = pygame.Surface((ghost_width, ghost_height))
-                highlight.set_alpha(100)
-                highlight.fill(color)
-                self.screen.blit(highlight, (tile_x - ghost_width // 2, tile_y - ghost_height // 2))
-                self.screen.blit(self.dragged_tower_image, (tile_x - ghost_width // 2, tile_y - ghost_height // 2))
-
-
-            self.ui.draw(self.screen)
-
-            pygame.display.flip()
+            self.draw_ui()
             self.clock.tick(FPS)
             self.timer.update()
 
         pygame.quit()
 
+    def draw_base(self):
+        self.screen.fill(self.bg_color)
+        self.tilemap.draw(self.screen)
+
+    def draw_ui(self):
+
+        self.tower_dragging.drag()
+        self.ui.draw(self.screen)
+        pygame.display.flip()
+
     def get_events(self):
+        if self.check_game_over():
+            self.running = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
 
             for button in self.buttons:
-                button.handle_event(event, self.start_dragging)
+                button.handle_event(event, self.tower_dragging.start_dragging)
 
             if event.type == pygame.KEYDOWN:
                 pass # Placeholder for future key events
 
-            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
-                if self.dragging:
-                    mouse_x, mouse_y = pygame.mouse.get_pos()
-                    grid_x = (mouse_x // TILE_SIZE) * TILE_SIZE + TILE_SIZE // 2
-                    grid_y = (mouse_y // TILE_SIZE) * TILE_SIZE + TILE_SIZE // 2
-                    new_tower = None
-                    if self.dragged_tower_type == "Tower1":
-                        if self.tilemap.tile_is_free(grid_x // TILE_SIZE, grid_y // TILE_SIZE):
-                            new_tower = Tower1((grid_x, grid_y))
-                    elif self.dragged_tower_type == "Tower2":
-                        if self.tilemap.tile_is_free(grid_x // TILE_SIZE, grid_y // TILE_SIZE):
-                            new_tower = Tower2((grid_x, grid_y))
-                    for tower in self.tower_manager.towers:
-                        if (grid_x, grid_y) == tower.position:
-                            new_tower = None
-                    if new_tower:
-                        self.tower_manager.add_tower(new_tower)
-                    self.dragging = False
-                    self.dragged_tower_type = None
-                    self.dragged_tower_image = None
+            self.get_mouseup_events(event)
+
+    def update_enemies_and_towers(self):
+        self.enemy_manager.add_enemies()
+        self.enemy_manager.update_enemies()
+        self.tower_manager.update_towers()
+
+    def update_projectiles(self):
+        self.projectiles[:] = [p for p in self.projectiles if p and not p.has_exceeded_range()]
+        for projectile in self.projectiles:
+            if projectile:
+                projectile.update()
+                projectile.draw(self.screen)
+
+    def check_collision(self):
+        to_remove = []
+        for projectile in self.projectiles:
+            for enemy in self.enemy_manager.enemies:
+                if projectile.rect.colliderect(enemy.rect):
+                    self.enemy_manager.remove(enemy)
+                    to_remove.append(projectile)
+                    self.currency.increase(1)
+                    break
+        for projectile in to_remove:
+            if projectile in self.projectiles:
+                self.projectiles.remove(projectile)
+
+    def get_mouseup_events(self, event):
+        if event.type != pygame.MOUSEBUTTONUP or event.button != 1:
+            return
+
+        if not self.tower_dragging.is_dragging():
+            return
+
+        def tile_is_occupied(grid_x, grid_y):
+            for tower in self.tower_manager.towers:
+                if (grid_x, grid_y) == tower.position:
+                    return True
+            return False
+
+        mouse_x, mouse_y = pygame.mouse.get_pos()
+        grid_x = (mouse_x // TILE_SIZE) * TILE_SIZE + TILE_SIZE // 2
+        grid_y = (mouse_y // TILE_SIZE) * TILE_SIZE + TILE_SIZE // 2
+
+        tower_type = self.tower_dragging.dragged_tower_type
+        if not tower_type:
+            self.tower_dragging.reset_dragging()
+            return
+
+        if (self.tilemap.tile_is_free(grid_x // TILE_SIZE, grid_y // TILE_SIZE)
+            and not tile_is_occupied(grid_x, grid_y)):
+            if tower_type == "Tower1":
+                new_tower = Tower1((grid_x, grid_y))
+            elif tower_type == "Tower2":
+                new_tower = Tower2((grid_x, grid_y))
+            else:
+                new_tower = None
+            if new_tower:
+                self.tower_manager.add_tower(new_tower)
+
+        self.tower_dragging.reset_dragging()
 
     def start_game(self):
         self.running = True
         self.enemy_path.get_path(self.enemy_path.map_data)
+
 
     def check_game_over(self):
         hp = self.hp_bar.current_health()
         if hp <= 0:
             return True
         return False
-    
-    def start_dragging(self, tower_type):
-        self.dragging = True
-        self.dragged_tower_type = tower_type
 
-        self.dragged_tower_image = None
-        if tower_type == "Tower1":
-            self.dragged_tower_image = load_image("defences/defence1.png")
-        elif tower_type == "Tower2":
-            self.dragged_tower_image = load_image("defences/defence2.png")
 
 class TowerManager:
     def __init__(self, screen, timer, projectiles, ui):
@@ -154,16 +153,17 @@ class TowerManager:
         self.screen = screen
         self.timer = timer
         self.projectiles = projectiles
-        self.ui = ui    
+        self.ui = ui
 
     def add_tower(self, tower):
-        if self.ui.currency_stat.current_amount() >= tower.price:
-            self.ui.currency_stat.decrease(tower.price)
+        if self.ui.currency_stat.current_amount() >= tower.stats.price:
+            self.ui.currency_stat.decrease(tower.stats.price)
             self.towers.append(tower)
 
     def update_towers(self):
         for tower in self.towers:
             tower.draw(self.screen)
+            new_projectiles = []
             if tower.can_shoot(self.timer.get_real_timer()):
                 if tower.__class__.__name__ == "Tower1":
                     new_projectiles = tower.shoot("left", self.timer.get_real_timer())
@@ -198,3 +198,51 @@ class EnemyManager:
     def remove(self, enemy):
         if enemy in self.enemies:
             self.enemies.remove(enemy)
+
+class TowerDragging:
+    def __init__(self, screen, tilemap, tower_manager):
+        self.dragging = False
+        self.dragged_tower_type = None
+        self.dragged_tower_image = None
+        self.screen = screen
+        self.tilemap = tilemap
+        self.tower_manager = tower_manager
+
+    def reset_dragging(self):
+        self.dragging = False
+        self.dragged_tower_type = None
+        self.dragged_tower_image = None
+
+    def start_dragging(self, tower_type):
+        self.dragging = True
+        self.dragged_tower_type = tower_type
+
+        self.dragged_tower_image = None
+        if tower_type == "Tower1":
+            self.dragged_tower_image = load_image("defences/defence1.png")
+        elif tower_type == "Tower2":
+            self.dragged_tower_image = load_image("defences/defence2.png")
+
+    def drag(self):
+        if self.dragging and self.dragged_tower_image:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            tile_x = (mouse_x // TILE_SIZE) * TILE_SIZE + TILE_SIZE // 2
+            tile_y = (mouse_y // TILE_SIZE) * TILE_SIZE + TILE_SIZE // 2
+            ghost_width = self.dragged_tower_image.get_width()
+            ghost_height = self.dragged_tower_image.get_height()
+            if self.tilemap.tile_is_free(tile_x // TILE_SIZE, tile_y // TILE_SIZE):
+                color = (0, 255, 0)
+            else:
+                color = (255, 0, 0)
+            for tower in self.tower_manager.towers:
+                if (tile_x, tile_y) == tower.position:
+                    color = (255, 0, 0)
+            highlight = pygame.Surface((ghost_width, ghost_height))
+            highlight.set_alpha(100)
+            highlight.fill(color)
+            position = (tile_x - ghost_width // 2, tile_y - ghost_height // 2)
+            self.screen.blit(highlight, position)
+            self.screen.blit(self.dragged_tower_image, position)
+
+    def is_dragging(self):
+        return self.dragging

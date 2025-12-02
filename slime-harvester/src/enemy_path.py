@@ -17,6 +17,7 @@ class EnemyPath:
     def get_path(self, map_data):
         # Collect all '!' tile centers (in pixels)
         points = []
+        start = None
         for y, row in enumerate(map_data):
             for x, tile in enumerate(row):
                 if tile == "S":
@@ -30,6 +31,14 @@ class EnemyPath:
                     py = y * self.tile_size + self.tile_size // 2
                     points.append((px, py))
 
+        if start is None:
+            raise ValueError("Map must have a starting point 'S'")
+
+        self.path = self.order_path(points, start)
+        return self.path
+
+    def order_path(self, points, start):
+
         # If there are 0 or 1 points, nothing to reorder
         if len(points) <= 1:
             return points
@@ -40,20 +49,11 @@ class EnemyPath:
         current = start
 
         while remaining:
-            # find the remaining point closest to current
-            best_idx = None
-            best_dist_sq = None
-            cx, cy = current
-            for i, (rx, ry) in enumerate(remaining):
-                dx = rx - cx
-                dy = ry - cy
-                dist_sq = dx * dx + dy * dy
-                if best_dist_sq is None or dist_sq < best_dist_sq:
-                    best_dist_sq = dist_sq
-                    best_idx = i
+            # find the closest point using min()
+            closest = min(remaining, key=lambda p: (p[0]-current[0])**2 + (p[1]-current[1])**2)
+            ordered.append(closest)
+            remaining.remove(closest)
+            current = closest
 
-            # move the closest point to ordered list and continue
-            current = remaining.pop(best_idx)
-            ordered.append(current)
         return ordered
 #AI generoima loppuu

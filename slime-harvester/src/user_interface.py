@@ -23,13 +23,13 @@ class UserInterface():
         background.set_alpha(180)
         background.fill((0, 0, 0))
         return background
-    
+
     def currency(self):
         font = pygame.font.SysFont(None, 30)
         currency_amount = self.currency_stat.current_amount()
         currency = font.render(f"Currency: {currency_amount}", 1, (255, 215, 0))
         return currency
-    
+
     def currency_background(self):
         background = pygame.Surface((150, 25))
         background.set_alpha(180)

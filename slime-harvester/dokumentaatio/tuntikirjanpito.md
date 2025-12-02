@@ -10,4 +10,8 @@
 | 25.11. | 4 | puolustuksia |
 | 25.11. | 1 | pylint code |
 | 25.11. | 1 | repositorion siivous |
-| yht. | 17 | |
+| 30.11. | 1 | toiminnallisuutta |
+| 1.12. | 3 | toiminnallisuutta |
+| 2.12. | 4 | toiminnallisuutta |
+| 2.12. | 2 | refactor code(pylint) |
+| yht. | 27 | |

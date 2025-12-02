@@ -22,7 +22,8 @@ DIRECTION_VECTORS = {
 
 
 TOWER_CONFIG = {
-    "Tower1": {"projectile":"projectiles/projectile1.png", "damage":1, "range":500, "fire_rate":60, "price":10, "projectile_speed":3},
-    "Tower2": {"projectile":"projectiles/projectile2.png", "damage":1, "range":100, "fire_rate":60, "price":30, "projectile_speed":5}
-
+    "Tower1": {"projectile":"projectiles/projectile1.png",
+            "damage":1, "range":500, "fire_rate":60, "price":10, "projectile_speed":3},
+    "Tower2": {"projectile":"projectiles/projectile2.png",
+            "damage":1, "range":100, "fire_rate":60, "price":30, "projectile_speed":5}
 }

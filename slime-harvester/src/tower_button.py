@@ -26,9 +26,8 @@ class TowerButton:
 
     def is_hovering(self, mouse_pos):
         return self.rect.collidepoint(mouse_pos)
-    
+
     def handle_event(self, event, start_dragging):
-        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1: # pylint: disable=no-member
             if self.is_hovering(event.pos):
                 start_dragging(self.tower_type)
-
