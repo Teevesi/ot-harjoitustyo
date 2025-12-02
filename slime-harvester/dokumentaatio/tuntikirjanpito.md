@@ -14,4 +14,5 @@
 | 1.12. | 3 | toiminnallisuutta |
 | 2.12. | 4 | toiminnallisuutta |
 | 2.12. | 2 | refactor code(pylint) |
-| yht. | 27 | |
+| 2.12. | 1 | dokumentaatio |
+| yht. | 28 | |
