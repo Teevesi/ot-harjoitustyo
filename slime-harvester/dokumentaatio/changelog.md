@@ -16,3 +16,12 @@
 - Lisätty PlayerStats luokka
 - Lisätty elämät, jotka alenee, jos vihollinen pääsee kartan läpi
 - Pelin häviää jos elämät loppuu
+
+## viikko 5
+
+- Viholliset vaikeutuu pelin edetessä
+- Uusi puolustus
+- UI napit, joista voi ostaa puolustuksia
+- Puolustuksilla on hinta
+- Lisätty valuutta, jolla ostaa puolustuksia
+- Puolustuksilla on max alue, johon ne osuu, kunnes luodit poistetaan
