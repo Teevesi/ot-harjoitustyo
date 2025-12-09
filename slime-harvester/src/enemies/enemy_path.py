@@ -1,6 +1,7 @@
 import os
 
 class EnemyPath:
+    """ This class creates the enemy path based on a map file. """
 #AI generoima alkaa (vähän itse muokattu)
     def __init__(self, map_path, tile_size):
         base_dir = os.path.dirname(os.path.abspath(__file__))  # src/enemies/
@@ -11,12 +12,13 @@ class EnemyPath:
         self.path = self.get_path(self.map_data)
 
     def load_map(self, path):
+        """ Loads the map data from a file. """
         with open(path, encoding="utf-8") as f:
             rows = [line.strip() for line in f.readlines()]
         return rows
 
     def get_path(self, map_data):
-        # Collect all '!' tile centers (in pixels)
+        """ Extracts the enemy path from the map data. (All '!' tile centers) """
         points = []
         start = None
         for y, row in enumerate(map_data):
@@ -39,7 +41,7 @@ class EnemyPath:
         return self.path
 
     def order_path(self, points, start):
-
+        """ Orders the path points starting from the start point. ('S')"""
         # If there are 0 or 1 points, nothing to reorder
         if len(points) <= 1:
             return points

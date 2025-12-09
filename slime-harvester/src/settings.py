@@ -1,4 +1,4 @@
-
+""" This module contains configuration settings for the Slime Harvester game. """
 
 SCREEN_WIDTH = 1088
 SCREEN_HEIGHT = 768

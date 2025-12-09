@@ -4,6 +4,7 @@ import pygame
 
 #AI generoima alkaa
 class Enemy:
+    """ Represents an enemy that moves along a predefined path. """
     def __init__(self, path, enemy_speed):
         base_dir = os.path.dirname(__file__)
         self.path = path            # list of (x, y) points
@@ -14,11 +15,13 @@ class Enemy:
 
         self.x, self.y = path[0]    # start at first point (center)
         self.index = 1 if len(path) > 1 else 0  # current target index
-
-        self.image = pygame.image.load(os.path.join(base_dir, "..", "assets", "enemies", "enemy_red.png"))
+        path = "..", "assets", "enemies", "enemy_red.png"
+        self.image = pygame.image.load(os.path.join(base_dir, *path))
         self.rect = self.image.get_rect(center=(self.x, self.y))
 
     def update(self):
+        """ Updates the enemy's position along its path.
+            Returns True if the enemy has reached the end of the path. """
         # If at end of path → enemy finished
         if self.index >= len(self.path):
             return True   # done
@@ -44,6 +47,7 @@ class Enemy:
         return False
 
     def draw(self, screen):
+        """ Draws the enemy on the given screen. """
         self.rect.center = (self.x, self.y)
         screen.blit(self.image, self.rect)
 #AI generoima loppuu

@@ -1,24 +1,11 @@
-"""User interface rendering - pure UI display without game logic.
-
-This module handles rendering of UI elements like health bars, currency
-display, and tower buttons. It reads from game state but doesn't modify it.
-"""
 
 import pygame
 from ui.tower_button import TowerButton
 from load_image import load_image
 
-
 class UserInterface:
-    """Manages UI rendering (HUD, buttons, overlays).
-    
-    This class is responsible for drawing all UI elements. It reads
-    player stats but doesn't modify them.
-    
-    Attributes:
-        health_bar: HealthBar instance to read health from
-        currency_stat: Currency instance to read currency from
-        tower_buttons: List of TowerButton instances
+    """ This class manages user interface elements like health/currency
+    display and tower buttons.
     """
     def __init__(self, health_bar, currency):
         self.health_bar = health_bar
@@ -30,30 +17,35 @@ class UserInterface:
         ]
 
     def health(self):
+        """ Initializes and returns the health display surface. """
         font = pygame.font.SysFont(None, 30)
         hp = self.health_bar.current_health()
         health = font.render(f"Health: {hp}", 1, (20, 255, 0))
         return health
 
     def health_background(self):
+        """ Initializes and returns the health background surface. """
         background = pygame.Surface((120, 25))
         background.set_alpha(180)
         background.fill((0, 0, 0))
         return background
 
     def currency(self):
+        """ Initializes and returns the currency display surface. """
         font = pygame.font.SysFont(None, 30)
         currency_amount = self.currency_stat.current_amount()
         currency = font.render(f"Currency: {currency_amount}", 1, (255, 215, 0))
         return currency
 
     def currency_background(self):
+        """ Initializes and returns the currency background surface. """
         background = pygame.Surface((150, 25))
         background.set_alpha(180)
         background.fill((0, 0, 0))
         return background
 
     def draw(self, screen):
+        """ Draws the user interface elements onto the given screen. """
         screen.blit(self.health_background(), (7, 7))
         screen.blit(self.health(), (10, 10))
         screen.blit(self.currency_background(), (7, 37))

@@ -4,12 +4,13 @@ import pygame
 from settings import TILE_SIZE
 
 class TileMap:
+    """ Class to manage and render the tile map. """
     def __init__(self, file_path):
         base_dir = os.path.dirname(__file__)
 
         if not os.path.isabs(file_path):
             file_path = os.path.join(base_dir, file_path)
-
+        # Load tile images
         self.tile_images = {
             '#': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "rock.png")),
             '!': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "path.png")),
@@ -36,6 +37,7 @@ class TileMap:
             )
 
     def draw(self, surface):
+        """ Draws the tile map onto the given surface. """
         for row_index, row in enumerate(self.map_data):
             for col_index, tile_char in enumerate(row):
                 tile = self.tile_images[tile_char]
@@ -45,6 +47,7 @@ class TileMap:
                 )
 
     def tile_is_free(self, tile_x, tile_y):
+        """ Checks if the tile at (tile_x, tile_y) is free for tower placement. """
         if tile_y < 0 or tile_y >= len(self.map_data):
             return False
         if tile_x < 0 or tile_x >= len(self.map_data[0]):

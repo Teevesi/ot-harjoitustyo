@@ -14,6 +14,7 @@ class TowerStats:
     projectile: str
 
 class Tower2:
+    """This class is for Tower2 defence. """
     def __init__(self, position):
         config = TOWER_CONFIG[self.__class__.__name__]
         self.position = position
@@ -34,12 +35,14 @@ class Tower2:
         self.image = load_image("defences/defence2.png")
 
     def can_shoot(self, frame):
+        """ Checks if the tower can shoot based on its fire rate. """
         can_shoot = (frame - self.last_shot_time) >=  self.stats.fire_rate
         if can_shoot:
             return True
         return False
 
     def shoot(self, frame):
+        """ Shoots projectiles in all directions if possible. """
         projectiles = []
         if self.can_shoot(frame):
             for dx, dy in DIRECTION_VECTORS.values():
@@ -53,7 +56,7 @@ class Tower2:
         return projectiles
 
     def update(self, frame):
-
+        """ Updates the tower's projectiles. Add new projectiles if shooting. """
         for projectile in self.projectiles:
             projectile.update()
 
@@ -64,6 +67,7 @@ class Tower2:
             self.projectiles.extend(new_projectiles)
 
     def draw(self, screen):
+        """ Draws the tower on the given screen. """
         width = self.image.get_width()
         height = self.image.get_height()
         screen.blit(self.image, (self.position[0] - width // 2, self.position[1] - height // 2))
