@@ -14,7 +14,7 @@ Tänne tulee ohjelmistotekniikan harjoitustyö, **yksinkertainen** *tower-defenc
 
 ## Käynnistysohjeet
 
-Kloonee repositorio koneellesi.
+Kloonaa repositorio koneellesi tai lataa tiedosto release-kohdasta.
 
 Suorita slime-harvester hakemistossa komento:
 

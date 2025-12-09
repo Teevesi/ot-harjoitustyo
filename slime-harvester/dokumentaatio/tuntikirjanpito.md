@@ -17,5 +17,5 @@
 | 2.12. | 1 | dokumentaatio |
 | 9.12. | 3 | eroteltu käyttöliittymä pelilogiikasta, parannettu pakkausrakennetta |
 | 9.12. | 1 | lisää testejä |
-| 9.12. | 1 | pylint code |
-| yht. | 33 | |
+| 9.12. | 2 | pylint code, docstring-dokumentaatio |
+| yht. | 34 | |
