@@ -1,13 +1,12 @@
-from enemy_timing import EnemyTiming
+from enemies.enemy_timing import EnemyTiming
 from settings import ENEMY_SPEED
 
 class EnemyManager:
-    def __init__(self, timer, enemy_path, screen, hp_bar):
+    def __init__(self, timer, enemy_path, hp_bar):
         self.enemies = []
         self.enemy_timing = EnemyTiming()
         self.enemy_path = enemy_path
         self.timer = timer
-        self.screen = screen
         self.hp_bar = hp_bar
 
     def add_enemies(self):
@@ -16,12 +15,11 @@ class EnemyManager:
             self.enemies.append(new_enemy)
 
     def update_enemies(self):
-        for enemy in self.enemies:
+        """Update all enemies (logic only, no rendering)."""
+        for enemy in list(self.enemies):  # Use list() to avoid modification during iteration
             if enemy.update() is True:
                 self.enemies.remove(enemy)
                 self.hp_bar.take_damage(1)
-                continue
-            enemy.draw(self.screen)
 
     def remove(self, enemy):
         if enemy in self.enemies:

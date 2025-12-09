@@ -1,8 +1,25 @@
+"""User interface rendering - pure UI display without game logic.
+
+This module handles rendering of UI elements like health bars, currency
+display, and tower buttons. It reads from game state but doesn't modify it.
+"""
+
 import pygame
-from tower_button import TowerButton
+from ui.tower_button import TowerButton
 from load_image import load_image
 
-class UserInterface():
+
+class UserInterface:
+    """Manages UI rendering (HUD, buttons, overlays).
+    
+    This class is responsible for drawing all UI elements. It reads
+    player stats but doesn't modify them.
+    
+    Attributes:
+        health_bar: HealthBar instance to read health from
+        currency_stat: Currency instance to read currency from
+        tower_buttons: List of TowerButton instances
+    """
     def __init__(self, health_bar, currency):
         self.health_bar = health_bar
         self.currency_stat = currency
