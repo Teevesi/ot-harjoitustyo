@@ -15,7 +15,7 @@ class Enemy:
         self.x, self.y = path[0]    # start at first point (center)
         self.index = 1 if len(path) > 1 else 0  # current target index
 
-        self.image = pygame.image.load(os.path.join(base_dir, "assets", "enemies", "enemy_red.png"))
+        self.image = pygame.image.load(os.path.join(base_dir, "..", "assets", "enemies", "enemy_red.png"))
         self.rect = self.image.get_rect(center=(self.x, self.y))
 
     def update(self):

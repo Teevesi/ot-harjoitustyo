@@ -1,4 +1,4 @@
-from enemy_movement import Enemy
+from enemies.enemy_movement import Enemy
 
 
 class Timer():

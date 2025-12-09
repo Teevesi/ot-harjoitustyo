@@ -2,8 +2,8 @@
 import pygame
 from tilemap import TileMap
 from settings import FPS, BG_COLOR, MAP_NAME, ENEMY_SPEED, MAX_HEALTH, TILE_SIZE
-from enemy_path import EnemyPath
-from enemy_timing import EnemyTiming, Timer
+from enemies.enemy_path import EnemyPath
+from enemies.enemy_timing import EnemyTiming, Timer
 from user_interface import UserInterface
 from player_stats import HealthBar, Currency
 from defences.tower1 import Tower1

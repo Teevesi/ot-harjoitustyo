@@ -3,8 +3,9 @@ import os
 class EnemyPath:
 #AI generoima alkaa (vähän itse muokattu)
     def __init__(self, map_path, tile_size):
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        full_path = os.path.join(base_dir, map_path)
+        base_dir = os.path.dirname(os.path.abspath(__file__))  # src/enemies/
+        parent_dir = os.path.dirname(base_dir)  # src/
+        full_path = os.path.join(parent_dir, map_path)
         self.map_data = self.load_map(full_path)
         self.tile_size = tile_size
         self.path = self.get_path(self.map_data)

@@ -27,3 +27,9 @@ TOWER_CONFIG = {
     "Tower2": {"projectile":"projectiles/projectile2.png",
             "damage":1, "range":100, "fire_rate":60, "price":30, "projectile_speed":5}
 }
+
+WAVE_CONFIG = {
+    1: {"enemy_count": 5, "spawn_delay": 120},
+    2: {"enemy_count": 10, "spawn_delay": 100},
+    3: {"enemy_count": 15, "spawn_delay": 80}
+}
