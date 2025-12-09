@@ -15,4 +15,5 @@
 | 2.12. | 4 | toiminnallisuutta |
 | 2.12. | 2 | refactor code(pylint) |
 | 2.12. | 1 | dokumentaatio |
-| yht. | 28 | |
+| 9.12. | 3 | eroteltu käyttöliittymä pelilogiikasta, parannettu pakkausrakennetta |
+| yht. | 31 | |

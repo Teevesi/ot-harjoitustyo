@@ -25,3 +25,8 @@
 - Puolustuksilla on hinta
 - Lisätty valuutta, jolla ostaa puolustuksia
 - Puolustuksilla on max alue, johon ne osuu, kunnes luodit poistetaan
+
+## viikko 6
+
+- Eroteltu pelilogiikka käyttöliittymästä
+- Parannettu projektin pakkausrakennetta
