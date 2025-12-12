@@ -25,15 +25,12 @@ class EnemyTiming:
         self.last_spawn_time = 0
         self.min_interval = 2
 
-    def get_interval(self, current_time):
-        """ Calculates the current spawn interval based on the elapsed time. """
-        # Decrease spawn interval over time, but not below min_interval
-        interval = self.spawn_interval - (current_time // 100)
-        return max(self.min_interval, interval)
+    def update_interval(self, new_interval):
+        self.spawn_interval = new_interval
 
     def can_spawn(self, current_time):
         """ Determines if an enemy can spawn based on the current time and spawn interval. """
-        interval = self.get_interval(current_time)
+        interval = self.spawn_interval
         if current_time - self.last_spawn_time >= interval:
             self.last_spawn_time = current_time
             return True
@@ -43,6 +40,6 @@ class EnemyTiming:
         """ Resets the spawn timer. """
         self.last_spawn_time = 0
 
-    def spawn_enemy(self, enemy_path, enemy_speed):
+    def spawn_enemy(self, enemy_path, enemy_speed, enemy_image):
         """ Spawns a new enemy at the start of the path. """
-        return Enemy(enemy_path.path, enemy_speed)
+        return Enemy(enemy_path.path, enemy_speed, enemy_image)

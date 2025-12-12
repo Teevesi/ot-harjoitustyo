@@ -5,7 +5,7 @@ import pygame
 #AI generoima alkaa
 class Enemy:
     """ Represents an enemy that moves along a predefined path. """
-    def __init__(self, path, enemy_speed):
+    def __init__(self, path, enemy_speed, enemy_image):
         base_dir = os.path.dirname(__file__)
         self.path = path            # list of (x, y) points
         self.speed = enemy_speed
@@ -13,10 +13,12 @@ class Enemy:
         if not path:
             raise ValueError("path must contain at least one point")
 
+        self.enemy_image = enemy_image
         self.x, self.y = path[0]    # start at first point (center)
         self.index = 1 if len(path) > 1 else 0  # current target index
-        path = "..", "assets", "enemies", "enemy_red.png"
-        self.image = pygame.image.load(os.path.join(base_dir, *path))
+        path = os.path.join("..", "assets", "enemies", self.enemy_image)
+        full_path = os.path.join(base_dir, path)
+        self.image = pygame.image.load(full_path)
         self.rect = self.image.get_rect(center=(self.x, self.y))
 
     def update(self):

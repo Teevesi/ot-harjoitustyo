@@ -22,7 +22,7 @@ class Game:
         self.game_state = GameState()
         self.tilemap = TileMap(MAP_NAME)
         self.renderer = GameRenderer(self.screen, self.tilemap)
-        self.ui = UserInterface(self.game_state.hp_bar, self.game_state.currency)
+        self.ui = UserInterface(self.game_state.hp_bar, self.game_state.currency, self.game_state.wave_manager)
         self.tower_dragging = TowerDragging(self.tilemap, self.game_state)
         self.input_handler = InputHandler(self.game_state, self.tower_dragging, self.ui)
 

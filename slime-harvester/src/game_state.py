@@ -3,6 +3,7 @@ from settings import MAP_NAME, MAX_HEALTH, TILE_SIZE
 from enemies.enemy_path import EnemyPath
 from enemies.enemy_timing import Timer
 from enemies.enemy_manager import EnemyManager
+from enemies.wave_manager import WaveManager
 from player_stats import HealthBar, Currency
 from defences.tower1 import Tower1
 from defences.tower2 import Tower2
@@ -25,6 +26,8 @@ class GameState:
             self.hp_bar
         )
 
+        self.wave_manager = WaveManager(self.enemy_manager)
+
         self.selected_tower_type = None
 
     def start_game(self):
@@ -39,7 +42,8 @@ class GameState:
     def update(self):
         """ Update the game state. """
         if self.enemy_manager:
-            self.enemy_manager.add_enemies()
+            # self.enemy_manager.add_enemies()
+            self.wave_manager.spawn_wave()
             self.enemy_manager.update_enemies()
 
         self._update_towers()

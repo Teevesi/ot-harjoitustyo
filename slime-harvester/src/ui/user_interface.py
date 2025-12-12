@@ -7,9 +7,10 @@ class UserInterface:
     """ This class manages user interface elements like health/currency
     display and tower buttons.
     """
-    def __init__(self, health_bar, currency):
+    def __init__(self, health_bar, currency, wave_manager):
         self.health_bar = health_bar
         self.currency_stat = currency
+        self.wave_manager = wave_manager
         self.tower_buttons = [
             # TowerButton instances can be added here in the future
             TowerButton(load_image("defences/defence1.png"), (1028, 68), "Tower1"),
@@ -43,6 +44,22 @@ class UserInterface:
         background.set_alpha(180)
         background.fill((0, 0, 0))
         return background
+    
+    def wave(self):
+        """ Initialized and returns the wave display surface. """
+        font = pygame.font.SysFont(None, 30)
+        current_wave = self.wave_manager.current_wave
+        if current_wave <= 8:
+            wave = font.render(f"Wave: {current_wave}", 1, (155, 215, 0))
+        else:
+            wave = font.render(f"Wave: Endless", 1, (155, 215, 0))
+        return wave
+    
+    def wave_background(self):
+        background = pygame.Surface((150, 25))
+        background.set_alpha(180)
+        background.fill((0, 0, 0))
+        return background
 
     def draw(self, screen):
         """ Draws the user interface elements onto the given screen. """
@@ -50,5 +67,7 @@ class UserInterface:
         screen.blit(self.health(), (10, 10))
         screen.blit(self.currency_background(), (7, 37))
         screen.blit(self.currency(), (10, 40))
+        screen.blit(self.wave_background(), (207, 7))
+        screen.blit(self.wave(), (210, 10))
         for button in self.tower_buttons:
             button.draw(screen)

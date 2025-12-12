@@ -29,7 +29,14 @@ TOWER_CONFIG = {
 }
 
 WAVE_CONFIG = {
-    1: {"enemy_count": 5, "spawn_delay": 120},
-    2: {"enemy_count": 10, "spawn_delay": 100},
-    3: {"enemy_count": 15, "spawn_delay": 80}
+    1: {"enemy_count": 5, "spawn_interval": 60, "enemy_image": "enemy_red.png"},
+    2: {"enemy_count": 10, "spawn_interval": 50, "enemy_image": "enemy_red.png"},
+    3: {"enemy_count": 15, "spawn_interval": 40, "enemy_image": "enemy_red.png"},
+    4: {"enemy_count": 20, "spawn_interval": 30, "enemy_image": "enemy_red.png"},
+    5: {"enemy_count": 25, "spawn_interval": 20, "enemy_image": "enemy_red.png"},
+    6: {"enemy_count": 30, "spawn_interval": 10, "enemy_image": "enemy_red.png"},
+    7: {"enemy_count": 35, "spawn_interval": 10, "enemy_image": "enemy_red.png"},
+    8: {"enemy_count": 40, "spawn_interval": 5, "enemy_image": "enemy_red.png"},
+    9: {"enemy_count": 100000000, "spawn_interval": 5, "enemy_image": "enemy_red.png"}
+
 }
