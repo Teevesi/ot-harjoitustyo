@@ -32,3 +32,7 @@
 - Parannettu projektin pakkausrakennetta
 - Lisätty docstring-dokumentaatio suurelle osalle luokista ja funktioista
 - Tehty pelistä hiukan haastavampi muokkaamalla asetuksia
+
+## loppupalautus
+
+- Lisätty aallot vihollisiin

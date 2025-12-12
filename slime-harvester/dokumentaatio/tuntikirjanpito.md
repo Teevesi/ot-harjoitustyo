@@ -18,4 +18,5 @@
 | 9.12. | 3 | eroteltu käyttöliittymä pelilogiikasta, parannettu pakkausrakennetta |
 | 9.12. | 1 | lisää testejä |
 | 9.12. | 2 | pylint code, docstring-dokumentaatio |
-| yht. | 34 | |
+| 12.12. | 3 | lisätty vihollisaallot |
+| yht. | 37 | |

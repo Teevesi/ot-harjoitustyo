@@ -12,7 +12,6 @@ class WaveManager:
 
     def spawn_wave(self):
         """ Manages enemy spawn waves. """
-        print(self.wave_cooldown)
         wave = self.wave_config[self.current_wave]
         self.wave_cooldown -= 1
         if self.remaining_enemies == 0:
@@ -32,18 +31,7 @@ class WaveManager:
         if self.wave_cooldown <= 0:
             return False
         return True
-    
+
     def reset_wave_cooldown(self):
         """ Resets wave cooldown. """
         self.wave_cooldown = 300
-
-
-
-        
-
-
-
-
-        
-        
-
