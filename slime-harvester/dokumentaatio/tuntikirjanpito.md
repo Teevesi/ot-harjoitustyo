@@ -19,4 +19,5 @@
 | 9.12. | 1 | lisää testejä |
 | 9.12. | 2 | pylint code, docstring-dokumentaatio |
 | 12.12. | 3 | lisätty vihollisaallot |
-| yht. | 37 | |
+| 13.12. | 2 | lisätty uusi vihollinen |
+| yht. | 39 | |
