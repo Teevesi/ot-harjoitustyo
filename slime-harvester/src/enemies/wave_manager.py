@@ -1,5 +1,5 @@
 """ This module will manage enemy waves and difficulty scaling. """
-from settings import WAVE_CONFIG
+from settings import WAVE_CONFIG, ENEMY_CONFIG
 
 class WaveManager:
     """ This class manages enemy waves and difficulty scaling. """
@@ -9,6 +9,7 @@ class WaveManager:
         self.remaining_enemies = self.wave_config[self.current_wave]["enemy_count"]
         self.enemy_manager = enemy_manager
         self.wave_cooldown = 0
+        self.enemy_config = ENEMY_CONFIG
 
     def spawn_wave(self):
         """ Manages enemy spawn waves. """
@@ -21,7 +22,7 @@ class WaveManager:
         else:
             if self.remaining_enemies == 1:
                 self.reset_wave_cooldown()
-            if self.enemy_manager.add_enemies(wave["enemy_image"]) is True:
+            if self.enemy_manager.add_enemies(self.enemy_config[wave["enemy_type"]]) is True:
                 self.remaining_enemies -= 1
                 spawn_interval = self.wave_config[self.current_wave]["spawn_interval"]
                 self.enemy_manager.update_interval(spawn_interval)

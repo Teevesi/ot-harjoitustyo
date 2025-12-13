@@ -2,24 +2,28 @@ import math
 import os
 import pygame
 
+from settings import ENEMY_CONFIG
+
 #AI generoima alkaa
 class Enemy:
     """ Represents an enemy that moves along a predefined path. """
-    def __init__(self, path, enemy_speed, enemy_image):
-        base_dir = os.path.dirname(__file__)
+    def __init__(self, path, enemy_type):
+        self.base_dir = os.path.dirname(__file__)
         self.path = path            # list of (x, y) points
-        self.speed = enemy_speed
+        self.config = ENEMY_CONFIG
+        self.speed = enemy_type["enemy_speed"]
         # Start at the center of the first tile; first *target* is the second point
         if not path:
             raise ValueError("path must contain at least one point")
 
-        self.enemy_image = enemy_image
+        self.enemy_image = enemy_type["enemy_image"]
         self.x, self.y = path[0]    # start at first point (center)
         self.index = 1 if len(path) > 1 else 0  # current target index
         path = os.path.join("..", "assets", "enemies", self.enemy_image)
-        full_path = os.path.join(base_dir, path)
+        full_path = os.path.join(self.base_dir, path)
         self.image = pygame.image.load(full_path)
         self.rect = self.image.get_rect(center=(self.x, self.y))
+        self.enemy_type = enemy_type
 
     def update(self):
         """ Updates the enemy's position along its path.
@@ -53,3 +57,11 @@ class Enemy:
         self.rect.center = (self.x, self.y)
         screen.blit(self.image, self.rect)
 #AI generoima loppuu
+    def swap_enemy_type(self, new_enemy_type):
+        """ Swaps the enemy type to new enemy type. """
+        new_image = new_enemy_type["enemy_image"]
+        path = os.path.join("..", "assets", "enemies", new_image)
+        full_path = os.path.join(self.base_dir, path)
+        self.image = pygame.image.load(full_path)
+        self.enemy_type = new_enemy_type
+        self.speed = new_enemy_type["enemy_speed"]

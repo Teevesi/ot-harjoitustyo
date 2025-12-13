@@ -40,6 +40,6 @@ class EnemyTiming:
         """ Resets the spawn timer. """
         self.last_spawn_time = 0
 
-    def spawn_enemy(self, enemy_path, enemy_speed, enemy_image):
+    def spawn_enemy(self, enemy_path, enemy_type):
         """ Spawns a new enemy at the start of the path. """
-        return Enemy(enemy_path.path, enemy_speed, enemy_image)
+        return Enemy(enemy_path.path, enemy_type)

@@ -1,5 +1,5 @@
 from enemies.enemy_timing import EnemyTiming
-from settings import ENEMY_SPEED
+from settings import ENEMY_CONFIG
 
 class EnemyManager:
     """ This class manages all enemies in the game. """
@@ -9,11 +9,12 @@ class EnemyManager:
         self.enemy_path = enemy_path
         self.timer = timer
         self.hp_bar = hp_bar
+        self.enemy_config = ENEMY_CONFIG
 
-    def add_enemies(self, enemy_image):
+    def add_enemies(self, enemy_type):
         """Add new enemies based on the timing mechanism. """
         if self.enemy_timing.can_spawn(self.timer.get_real_timer()) is True:
-            new_enemy = self.enemy_timing.spawn_enemy(self.enemy_path, ENEMY_SPEED, enemy_image)
+            new_enemy = self.enemy_timing.spawn_enemy(self.enemy_path, enemy_type)
             self.enemies.append(new_enemy)
             return True
         return False
@@ -32,3 +33,9 @@ class EnemyManager:
         """Remove the specified enemy from the list."""
         if enemy in self.enemies:
             self.enemies.remove(enemy)
+
+    def get_enemy_hit_action(self, enemy):
+        if enemy.enemy_type["next_type"] == 0:
+            self.remove(enemy)
+        else:
+            enemy.swap_enemy_type(self.enemy_config[enemy.enemy_type["next_type"]])

@@ -1,4 +1,5 @@
 import pygame
+from settings import TOWER_CONFIG
 
 class TowerButton:
     """
@@ -13,6 +14,7 @@ class TowerButton:
         self.background = pygame.Surface((self.size, self.size))
         self.background.set_alpha(180)
         self.background.fill((0, 0, 0))
+        self.tower_price = TOWER_CONFIG[self.tower_type]["price"]
 
     def draw(self, surface):
         """ Draws the tower button. """
@@ -27,6 +29,9 @@ class TowerButton:
         surface.blit(self.background, self.position)
         scaled_image = pygame.transform.scale(self.image, (self.size, self.size))
         surface.blit(scaled_image, self.position)
+        font = pygame.font.SysFont(None, 15)
+        price = font.render(f"Cost: {self.tower_price}", 1, (200, 255, 250))
+        surface.blit(price, (self.position[0], self.position[1]-5))
 
     def is_hovering(self, mouse_pos):
         """ checks if mouse is hovering the tower button. """

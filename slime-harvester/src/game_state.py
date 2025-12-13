@@ -85,7 +85,7 @@ class GameState:
         for projectile in self.projectiles:
             for enemy in self.enemy_manager.enemies:
                 if projectile.rect.colliderect(enemy.rect):
-                    self.enemy_manager.remove(enemy)
+                    self.enemy_manager.get_enemy_hit_action(enemy)
                     to_remove.append(projectile)
                     self.currency.increase(1)
                     break
