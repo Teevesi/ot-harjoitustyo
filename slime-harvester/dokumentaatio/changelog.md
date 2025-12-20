@@ -36,4 +36,4 @@
 ## loppupalautus
 
 - Lisätty aallot vihollisiin
-- Lisätty uusi vihollinen
+- Lisätty kolme uutta vihollista
