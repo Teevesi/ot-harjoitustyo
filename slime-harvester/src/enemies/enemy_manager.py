@@ -11,10 +11,14 @@ class EnemyManager:
         self.hp_bar = hp_bar
         self.enemy_config = ENEMY_CONFIG
 
-    def add_enemies(self, enemy_type):
-        """Add new enemies based on the timing mechanism. """
+    def add_enemies(self, enemy_type_dict=None):
+        """Attempt to spawn an enemy.
+        Returns True if an enemy was spawned, False otherwise.
+        """
         if self.enemy_timing.can_spawn(self.timer.get_real_timer()) is True:
-            new_enemy = self.enemy_timing.spawn_enemy(self.enemy_path, enemy_type)
+            if enemy_type_dict is None:
+                enemy_type_dict = self.enemy_config["red_slime"]
+            new_enemy = self.enemy_timing.spawn_enemy(self.enemy_path, enemy_type_dict)
             self.enemies.append(new_enemy)
             return True
         return False
@@ -27,6 +31,7 @@ class EnemyManager:
                 self.hp_bar.take_damage(1)
 
     def update_interval(self, new_interval):
+        """Update spawn interval via EnemyTiming."""
         self.enemy_timing.update_interval(new_interval)
 
     def remove(self, enemy):

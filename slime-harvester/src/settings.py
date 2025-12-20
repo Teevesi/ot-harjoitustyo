@@ -1,4 +1,5 @@
 """ This module contains configuration settings for the Slime Harvester game. """
+from generate_wave_config import generate_wave_config
 
 SCREEN_WIDTH = 1088
 SCREEN_HEIGHT = 768
@@ -23,27 +24,28 @@ DIRECTION_VECTORS = {
 
 TOWER_CONFIG = {
     "Tower1": {"projectile":"projectiles/projectile1.png",
-            "damage":1, "range":500, "fire_rate":60, "price":50, "projectile_speed":3},
+            "damage":1, "range":500, "fire_rate":30, "price":30, "projectile_speed":3},
     "Tower2": {"projectile":"projectiles/projectile2.png",
-            "damage":1, "range":100, "fire_rate":60, "price":100, "projectile_speed":5}
+            "damage":1, "range":100, "fire_rate":90, "price":80, "projectile_speed":5}
 }
 
 ENEMY_CONFIG = {
-    "red_slime": {"health": 1, "enemy_speed": 2, "enemy_image": "enemy_red.png", "next_type": 0},
-    "blue_slime": {"health": 1, "enemy_speed": 2, "enemy_image": "enemy_blue.png", "next_type": "red_slime"},
-    "green_slime": {"health": 1, "enemy_speed": 3, "enemy_image": "enemy_green.png", "next_type": "blue_slime"},
-    "pink_slime": {"health": 1, "enemy_speed": 5, "enemy_image": "enemy_pink.png", "next_type": "green_slime"}
+    "red_slime": {"health": 1,
+                "enemy_speed": 2,
+                "enemy_image": "enemy_red.png",
+                "next_type": 0},
+    "blue_slime": {"health": 1,
+                "enemy_speed": 2,
+                "enemy_image": "enemy_blue.png",
+                "next_type": "red_slime"},
+    "green_slime": {"health": 1,
+                "enemy_speed": 3,
+                "enemy_image": "enemy_green.png",
+                "next_type": "blue_slime"},
+    "pink_slime": {"health": 1,
+                "enemy_speed": 5,
+                "enemy_image": "enemy_pink.png",
+                "next_type": "green_slime"}
 }
 
-WAVE_CONFIG = {
-    1: {"enemy_count": 5, "spawn_interval": 60, "enemy_type": "red_slime"},
-    2: {"enemy_count": 10, "spawn_interval": 50, "enemy_type": "blue_slime"},
-    3: {"enemy_count": 15, "spawn_interval": 40, "enemy_type": "red_slime"},
-    4: {"enemy_count": 10, "spawn_interval": 30, "enemy_type": "green_slime"},
-    5: {"enemy_count": 10, "spawn_interval": 20, "enemy_type": "pink_slime"},
-    6: {"enemy_count": 30, "spawn_interval": 10, "enemy_type": "red_slime"},
-    7: {"enemy_count": 20, "spawn_interval": 10, "enemy_type": "pink_slime"},
-    8: {"enemy_count": 40, "spawn_interval": 5, "enemy_type": "red_slime"},
-    9: {"enemy_count": 100000000, "spawn_interval": 5, "enemy_type": "red_slime"}
-
-}
+WAVE_CONFIG = generate_wave_config(50)

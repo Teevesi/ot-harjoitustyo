@@ -29,7 +29,7 @@ class EnemyPath:
                     py = y * self.tile_size + self.tile_size // 2
                     start = (px, py)
 
-                if tile == "!":
+                if tile in ["!", "-", "I", "O", "K", "L"]:
                     px = x * self.tile_size + self.tile_size // 2
                     py = y * self.tile_size + self.tile_size // 2
                     points.append((px, py))

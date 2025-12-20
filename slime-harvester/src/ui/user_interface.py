@@ -48,10 +48,7 @@ class UserInterface:
         """ Initialized and returns the wave display surface. """
         font = pygame.font.SysFont(None, 30)
         current_wave = self.wave_manager.current_wave
-        if current_wave <= 8:
-            wave = font.render(f"Wave: {current_wave}", 1, (155, 215, 0))
-        else:
-            wave = font.render(f"Endless", 1, (155, 215, 0))
+        wave = font.render(f"Wave: {current_wave}", 1, (155, 215, 0))
         return wave
     
     def wave_background(self):

@@ -37,3 +37,5 @@
 
 - Lisätty aallot vihollisiin
 - Lisätty kolme uutta vihollista
+- Paranneltu karttaa
+- Lisätty loputtomat aallot

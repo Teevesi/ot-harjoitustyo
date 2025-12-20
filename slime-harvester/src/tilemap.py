@@ -13,7 +13,12 @@ class TileMap:
         # Load tile images
         self.tile_images = {
             '#': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "rock.png")),
-            '!': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "path.png")),
+            '-': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "path_horizontal.png")), #pylint: disable=line-too-long
+            '!': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "path_vertical.png")),
+            'I': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "path_upleft.png")),
+            'O': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "path_upright.png")),
+            'K': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "path_downleft.png")),
+            'L': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "path_downright.png")),
             '.': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "grass.png")),
             'S': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "spawn_portal.png")),
             'B': pygame.image.load(os.path.join(base_dir, "assets", "tiles", "border.png")),
