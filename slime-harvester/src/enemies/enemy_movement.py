@@ -24,6 +24,7 @@ class Enemy:
         self.image = pygame.image.load(full_path)
         self.rect = self.image.get_rect(center=(self.x, self.y))
         self.enemy_type = enemy_type
+        self.enemy_hp = enemy_type["health"]
 
     def update(self):
         """ Updates the enemy's position along its path.
@@ -65,3 +66,11 @@ class Enemy:
         self.image = pygame.image.load(full_path)
         self.enemy_type = new_enemy_type
         self.speed = new_enemy_type["enemy_speed"]
+
+    def get_enemy_hp(self):
+        """ Returns the enemy's health. """
+        return self.enemy_hp
+    
+    def decrease_enemy_hp(self, amount):
+        """ Decreases the enemy's health by the given amount. """
+        self.enemy_hp -= amount

@@ -22,4 +22,5 @@
 | 13.12. | 2 | lisätty uusi vihollinen |
 | 19.12. | 1 | lisätty 2 uutta vihollista |
 | 20.12. | 2 | lisätty loputtomat aallot, paranneltu karttaa |
-| yht. | 42 | |
+| 20.12. | 1 | lisätty boss vihollinen |
+| yht. | 43 | |

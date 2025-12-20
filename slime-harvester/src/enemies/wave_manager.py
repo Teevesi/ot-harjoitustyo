@@ -40,7 +40,7 @@ class WaveManager:
 
     def reset_wave_cooldown(self):
         """ Resets wave cooldown. """
-        self.wave_cooldown = 300
+        self.wave_cooldown = 180
 
     def _get_current_wave_cfg(self):
         """Return config dict for current wave. """

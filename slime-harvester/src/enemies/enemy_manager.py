@@ -10,6 +10,7 @@ class EnemyManager:
         self.timer = timer
         self.hp_bar = hp_bar
         self.enemy_config = ENEMY_CONFIG
+        self.enemy_hp = None
 
     def add_enemies(self, enemy_type_dict=None):
         """Attempt to spawn an enemy.
@@ -40,7 +41,11 @@ class EnemyManager:
             self.enemies.remove(enemy)
 
     def get_enemy_hit_action(self, enemy):
-        if enemy.enemy_type["next_type"] == 0:
-            self.remove(enemy)
+        """Handles the action when an enemy is hit."""
+        if enemy.get_enemy_hp() > 1:
+            enemy.decrease_enemy_hp(1)
         else:
-            enemy.swap_enemy_type(self.enemy_config[enemy.enemy_type["next_type"]])
+            if enemy.enemy_type["next_type"] == 0:
+                    self.remove(enemy)
+            else:
+                enemy.swap_enemy_type(self.enemy_config[enemy.enemy_type["next_type"]])

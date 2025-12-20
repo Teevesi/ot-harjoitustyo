@@ -24,7 +24,7 @@ DIRECTION_VECTORS = {
 
 TOWER_CONFIG = {
     "Tower1": {"projectile":"projectiles/projectile1.png",
-            "damage":1, "range":500, "fire_rate":30, "price":30, "projectile_speed":3},
+            "damage":1, "range":800, "fire_rate":30, "price":30, "projectile_speed":3},
     "Tower2": {"projectile":"projectiles/projectile2.png",
             "damage":1, "range":100, "fire_rate":90, "price":80, "projectile_speed":5}
 }
@@ -45,7 +45,11 @@ ENEMY_CONFIG = {
     "pink_slime": {"health": 1,
                 "enemy_speed": 5,
                 "enemy_image": "enemy_pink.png",
-                "next_type": "green_slime"}
+                "next_type": "green_slime"},
+    "boss_rainbow": {"health": 100,
+                "enemy_speed": 1,
+                "enemy_image": "enemy_boss_rainbow.png",
+                "next_type": "pink_slime"}
 }
 
 WAVE_CONFIG = generate_wave_config(50)

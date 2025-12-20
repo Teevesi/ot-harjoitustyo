@@ -39,3 +39,4 @@
 - Lisätty kolme uutta vihollista
 - Paranneltu karttaa
 - Lisätty loputtomat aallot
+- Lisätty boss-vihollinen
