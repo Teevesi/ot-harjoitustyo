@@ -61,7 +61,7 @@ ENEMY_CONFIG = {
                 "enemy_image": "enemy_boss_rainbow.png",
                 "next_type": "pink_slime"},
     "boss_skull": {"name": "boss_skull",
-                "health": 50,
+                "health": 200,
                 "enemy_speed": 1,
                 "enemy_image": "enemy_boss_skull.png",
                 "next_type": "boss_rainbow"}
