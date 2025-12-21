@@ -24,4 +24,5 @@
 | 20.12. | 2 | lisätty loputtomat aallot, paranneltu karttaa |
 | 20.12. | 1 | lisätty boss vihollinen |
 | 21.12. | 2 | Paranneltu koodia |
-| yht. | 45 | |
+| 21.12. | 2 | Arkkitehtuurikuvaus, koodin viimeistely |
+| yht. | 47 | |
