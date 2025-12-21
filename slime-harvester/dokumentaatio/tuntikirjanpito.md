@@ -25,4 +25,5 @@
 | 20.12. | 1 | lisätty boss vihollinen |
 | 21.12. | 2 | Paranneltu koodia |
 | 21.12. | 2 | Arkkitehtuurikuvaus, koodin viimeistely |
-| yht. | 47 | |
+| 21.12. | 1 | lisätty 1 vihollinen, 1 boss vihollinen |
+| yht. | 48 | |

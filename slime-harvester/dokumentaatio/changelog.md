@@ -36,7 +36,7 @@
 ## loppupalautus
 
 - Lisätty aallot vihollisiin
-- Lisätty kolme uutta vihollista
+- Lisätty neljä uutta vihollista
 - Paranneltu karttaa
 - Lisätty loputtomat aallot
-- Lisätty boss-vihollinen
+- Lisätty 2 boss-vihollista
