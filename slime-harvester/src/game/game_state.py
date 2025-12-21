@@ -1,5 +1,5 @@
 
-from config.settings import MAP_NAME, MAX_HEALTH, TILE_SIZE
+from config.settings import MAP_NAME, MAX_HEALTH, TILE_SIZE, START_MONEY
 from enemies.enemy_path import EnemyPath
 from enemies.enemy_timing import Timer
 from enemies.enemy_manager import EnemyManager
@@ -14,7 +14,7 @@ class GameState: # pylint: disable=too-many-instance-attributes
     def __init__(self):
         self.timer = Timer()
         self.hp_bar = HealthBar(MAX_HEALTH)
-        self.currency = Currency(100)
+        self.currency = Currency(START_MONEY)
         self.enemy_path = EnemyPath(MAP_NAME, TILE_SIZE)
         self.projectiles = []
         self.towers = []
@@ -87,7 +87,8 @@ class GameState: # pylint: disable=too-many-instance-attributes
                 if projectile.rect.colliderect(enemy.rect):
                     self.enemy_manager.get_enemy_hit_action(enemy)
                     to_remove.append(projectile)
-                    self.currency.increase(1)
+                    currency_multiplier = max(1 - self.wave_manager.current_wave / 60, 0.1)
+                    self.currency.increase(currency_multiplier)
                     break
 
         # Remove collided projectiles

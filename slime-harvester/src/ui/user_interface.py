@@ -34,7 +34,7 @@ class UserInterface:
         """ Initializes and returns the currency display surface. """
         font = pygame.font.SysFont(None, 30)
         currency_amount = self.currency_stat.current_amount()
-        currency = font.render(f"Currency: {currency_amount}", 1, (255, 215, 0))
+        currency = font.render(f"Currency: {int(currency_amount)}", 1, (255, 215, 0))
         return currency
 
     def currency_background(self):

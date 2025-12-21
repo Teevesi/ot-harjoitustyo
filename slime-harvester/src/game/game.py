@@ -38,7 +38,7 @@ class Game: # pylint: disable=too-many-instance-attributes
             self.render()
 
             self.clock.tick(FPS)
-
+        print(f"Game Over. You made it to wave {self.game_state.wave_manager.current_wave}.")
         pygame.quit()
 
     def render(self):

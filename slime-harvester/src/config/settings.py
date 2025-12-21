@@ -6,9 +6,9 @@ SCREEN_HEIGHT = 768
 FPS = 60
 BG_COLOR = (30, 30, 30)
 MAP_NAME = "maps/map2.txt"
-ENEMY_SPEED = 2
 MAX_HEALTH = 100
 TILE_SIZE = 32
+START_MONEY = 50
 
 DIRECTION_VECTORS = {
     "up": (0, -1),
@@ -24,7 +24,7 @@ DIRECTION_VECTORS = {
 
 TOWER_CONFIG = {
     "Tower1": {"projectile":"projectiles/projectile1.png",
-            "damage":1, "range":800, "fire_rate":30, "price":30, "projectile_speed":3},
+            "damage":1, "range":800, "fire_rate":40, "price":30, "projectile_speed":3},
     "Tower2": {"projectile":"projectiles/projectile2.png",
             "damage":1, "range":100, "fire_rate":90, "price":80, "projectile_speed":5}
 }
@@ -50,11 +50,21 @@ ENEMY_CONFIG = {
                 "enemy_speed": 5,
                 "enemy_image": "enemy_pink.png",
                 "next_type": "green_slime"},
+    "black_slime": {"name": "black_slime",
+                "health": 1,
+                "enemy_speed": 5,
+                "enemy_image": "enemy_black.png",
+                "next_type": "pink_slime"},
     "boss_rainbow": {"name": "boss_rainbow",
                 "health": 50,
                 "enemy_speed": 1,
                 "enemy_image": "enemy_boss_rainbow.png",
-                "next_type": "pink_slime"}
+                "next_type": "pink_slime"},
+    "boss_skull": {"name": "boss_skull",
+                "health": 50,
+                "enemy_speed": 1,
+                "enemy_image": "enemy_boss_skull.png",
+                "next_type": "boss_rainbow"}
 }
 
 WAVE_CONFIG = generate_wave_config(50)
