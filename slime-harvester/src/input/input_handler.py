@@ -1,6 +1,6 @@
 # pylint: disable=no-member
 import pygame
-from settings import TILE_SIZE
+from config.settings import TILE_SIZE
 
 
 class InputHandler:

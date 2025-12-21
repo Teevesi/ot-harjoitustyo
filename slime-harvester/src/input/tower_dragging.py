@@ -1,5 +1,5 @@
 
-from load_image import load_image
+from config.load_image import load_image
 
 
 class TowerDragging:

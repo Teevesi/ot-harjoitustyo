@@ -2,7 +2,7 @@ import math
 import os
 import pygame
 
-from settings import ENEMY_CONFIG
+from config.settings import ENEMY_CONFIG
 
 #AI generoima alkaa
 class Enemy:

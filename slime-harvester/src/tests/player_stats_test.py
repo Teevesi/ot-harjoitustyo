@@ -4,7 +4,7 @@ import unittest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from player_stats import HealthBar, Currency
+from game.player_stats import HealthBar, Currency
 
 
 class TestHealthBar(unittest.TestCase):

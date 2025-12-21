@@ -4,9 +4,9 @@ import unittest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from game_state import GameState
-from tilemap import TileMap
-from settings import MAP_NAME
+from game.game_state import GameState
+from config.tilemap import TileMap
+from config.settings import MAP_NAME
 
 
 class TestGameState(unittest.TestCase):

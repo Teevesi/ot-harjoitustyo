@@ -1,10 +1,10 @@
 # pylint: disable=no-member
 import pygame
-from tilemap import TileMap
-from settings import FPS, MAP_NAME, TILE_SIZE
+from config.tilemap import TileMap
+from config.settings import FPS, MAP_NAME, TILE_SIZE
 from ui.user_interface import UserInterface
-from game_state import GameState
-from game_renderer import GameRenderer
+from game.game_state import GameState
+from game.game_renderer import GameRenderer
 from input.input_handler import InputHandler
 from input.tower_dragging import TowerDragging
 

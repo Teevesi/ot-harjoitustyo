@@ -1,7 +1,7 @@
 
 import pygame
 from ui.tower_button import TowerButton
-from load_image import load_image
+from config.load_image import load_image
 
 class UserInterface:
     """ This class manages user interface elements like health/currency

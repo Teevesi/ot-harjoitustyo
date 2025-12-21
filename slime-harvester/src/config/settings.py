@@ -1,5 +1,5 @@
 """ This module contains configuration settings for the Slime Harvester game. """
-from generate_wave_config import generate_wave_config
+from config.generate_wave_config import generate_wave_config
 
 SCREEN_WIDTH = 1088
 SCREEN_HEIGHT = 768

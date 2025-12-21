@@ -1,6 +1,6 @@
 
 import pygame
-from settings import BG_COLOR
+from config.settings import BG_COLOR
 
 class GameRenderer:
     """ Renders the game state to the screen. """

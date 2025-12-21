@@ -1,5 +1,5 @@
 from enemies.enemy_timing import EnemyTiming
-from settings import ENEMY_CONFIG
+from config.settings import ENEMY_CONFIG
 
 class EnemyManager:
     """ This class manages all enemies in the game. """

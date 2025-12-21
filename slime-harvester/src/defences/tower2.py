@@ -1,8 +1,8 @@
 # pylint: disable=duplicate-code
 from dataclasses import dataclass
-from projectiles import Projectile, ProjectileStats
-from settings import DIRECTION_VECTORS, TOWER_CONFIG
-from load_image import load_image
+from projectiles.projectiles import Projectile, ProjectileStats
+from config.settings import DIRECTION_VECTORS, TOWER_CONFIG
+from config.load_image import load_image
 
 @dataclass
 class TowerStats:

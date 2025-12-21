@@ -1,6 +1,6 @@
 """ This module will manage enemy waves and difficulty scaling. """
-from settings import WAVE_CONFIG, ENEMY_CONFIG
-from generate_wave_config import endless_wave
+from config.settings import WAVE_CONFIG, ENEMY_CONFIG
+from config.generate_wave_config import endless_wave
 
 class WaveManager:
     """ This class manages enemy waves and difficulty scaling. """

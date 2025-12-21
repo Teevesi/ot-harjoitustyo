@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from load_image import load_image
+from config.load_image import load_image
 
 @dataclass
 class ProjectileStats:

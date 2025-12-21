@@ -1,10 +1,10 @@
 
-from settings import MAP_NAME, MAX_HEALTH, TILE_SIZE
+from config.settings import MAP_NAME, MAX_HEALTH, TILE_SIZE
 from enemies.enemy_path import EnemyPath
 from enemies.enemy_timing import Timer
 from enemies.enemy_manager import EnemyManager
 from enemies.wave_manager import WaveManager
-from player_stats import HealthBar, Currency
+from game.player_stats import HealthBar, Currency
 from defences.tower1 import Tower1
 from defences.tower2 import Tower2
 

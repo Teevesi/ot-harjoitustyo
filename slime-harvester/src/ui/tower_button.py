@@ -1,5 +1,5 @@
 import pygame
-from settings import TOWER_CONFIG
+from config.settings import TOWER_CONFIG
 
 class TowerButton:
     """
