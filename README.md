@@ -14,6 +14,8 @@ Tänne tulee ohjelmistotekniikan harjoitustyö, **yksinkertainen** *tower-defenc
 
 - [Käyttöohje](https://github.com/Teevesi/ot-harjoitustyo/blob/main/slime-harvester/dokumentaatio/kayttoohje.md)
 
+- [Testausdokumentti](https://github.com/Teevesi/ot-harjoitustyo/blob/main/slime-harvester/dokumentaatio/testausdokumentti.md)
+
 ## Käynnistysohjeet
 
 Kloonaa repositorio koneellesi tai lataa tiedosto release-kohdasta.
