@@ -24,6 +24,8 @@ class Enemy: # pylint: disable=too-many-instance-attributes
         self.image = pygame.image.load(full_path)
         if enemy_type["name"] == "boss_rainbow":
             self.image = pygame.transform.scale(self.image, (64, 64))
+        elif enemy_type["name"] == "boss_skull":
+            self.image = pygame.transform.scale(self.image, (96, 96))
         self.rect = self.image.get_rect(center=(self.x, self.y))
         self.enemy_type = enemy_type
         self.enemy_hp = enemy_type["health"]
@@ -66,6 +68,13 @@ class Enemy: # pylint: disable=too-many-instance-attributes
         path = os.path.join("..", "assets", "enemies", new_image)
         full_path = os.path.join(self.base_dir, path)
         self.image = pygame.image.load(full_path)
+        
+        # Apply scaling for boss enemies
+        if new_enemy_type["name"] == "boss_rainbow":
+            self.image = pygame.transform.scale(self.image, (64, 64))
+        elif new_enemy_type["name"] == "boss_skull":
+            self.image = pygame.transform.scale(self.image, (96, 96))
+        
         self.enemy_type = new_enemy_type
         self.speed = new_enemy_type["enemy_speed"]
         self.enemy_hp = new_enemy_type["health"]
