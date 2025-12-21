@@ -9,7 +9,7 @@ from defences.tower1 import Tower1
 from defences.tower2 import Tower2
 
 
-class GameState:
+class GameState: # pylint: disable=too-many-instance-attributes
     """ This class manages the overall game state. """
     def __init__(self):
         self.timer = Timer()

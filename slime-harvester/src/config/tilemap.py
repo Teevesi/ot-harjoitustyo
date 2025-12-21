@@ -7,28 +7,29 @@ class TileMap:
     """ Class to manage and render the tile map. """
     def __init__(self, file_path):
         base_dir = os.path.dirname(__file__)
-        dir = os.path.join(base_dir, "..")
-        file_path = os.path.join(dir, file_path)
-
+        dir1 = os.path.join(base_dir, "..")
+        file_path = os.path.join(dir1, file_path)
+        path  = "..", "assets", "tiles"
+        full_path = os.path.join(base_dir, *path)
         # Load tile images
         self.tile_images = {
-            '#': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "rock.png")),
-            '-': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "path_horizontal.png")), #pylint: disable=line-too-long
-            '!': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "path_vertical.png")),
-            'I': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "path_upleft.png")),
-            'O': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "path_upright.png")),
-            'K': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "path_downleft.png")),
-            'L': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "path_downright.png")),
-            '.': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "grass.png")),
-            ',': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "grass_bush.png")),
-            'S': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "spawn_portal.png")),
-            'B': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "border.png")),
-            'Q': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "ui_bg_tl.png")),
-            'E': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "ui_bg_tr.png")),
-            'A': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "ui_bg_ml.png")),
-            'D': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "ui_bg_mr.png")),
-            'Z': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "ui_bg_bl.png")),
-            'C': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "ui_bg_br.png")),
+            '#': pygame.image.load(os.path.join(full_path, "rock.png")),
+            '-': pygame.image.load(os.path.join(full_path, "path_horizontal.png")),
+            '!': pygame.image.load(os.path.join(full_path, "path_vertical.png")),
+            'I': pygame.image.load(os.path.join(full_path, "path_upleft.png")),
+            'O': pygame.image.load(os.path.join(full_path, "path_upright.png")),
+            'K': pygame.image.load(os.path.join(full_path, "path_downleft.png")),
+            'L': pygame.image.load(os.path.join(full_path, "path_downright.png")),
+            '.': pygame.image.load(os.path.join(full_path, "grass.png")),
+            ',': pygame.image.load(os.path.join(full_path, "grass_bush.png")),
+            'S': pygame.image.load(os.path.join(full_path, "spawn_portal.png")),
+            'B': pygame.image.load(os.path.join(full_path, "border.png")),
+            'Q': pygame.image.load(os.path.join(full_path, "ui_bg_tl.png")),
+            'E': pygame.image.load(os.path.join(full_path, "ui_bg_tr.png")),
+            'A': pygame.image.load(os.path.join(full_path, "ui_bg_ml.png")),
+            'D': pygame.image.load(os.path.join(full_path, "ui_bg_mr.png")),
+            'Z': pygame.image.load(os.path.join(full_path, "ui_bg_bl.png")),
+            'C': pygame.image.load(os.path.join(full_path, "ui_bg_br.png")),
         }
 
         self.map_data = []

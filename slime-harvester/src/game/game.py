@@ -8,7 +8,7 @@ from game.game_renderer import GameRenderer
 from input.input_handler import InputHandler
 from input.tower_dragging import TowerDragging
 
-class Game:
+class Game: # pylint: disable=too-many-instance-attributes
     """ Main game class that initializes and runs the game loop. """
     def __init__(self, screen_width, screen_height):
         # Initialize pygame and display

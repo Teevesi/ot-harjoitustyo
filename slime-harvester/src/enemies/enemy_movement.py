@@ -5,7 +5,7 @@ import pygame
 from config.settings import ENEMY_CONFIG
 
 #AI generoima alkaa
-class Enemy:
+class Enemy: # pylint: disable=too-many-instance-attributes
     """ Represents an enemy that moves along a predefined path. """
     def __init__(self, path, enemy_type):
         self.base_dir = os.path.dirname(__file__)
@@ -74,25 +74,22 @@ class Enemy:
 
     def reset_to_path(self):
         """ Resets the enemy's position to the closest point on the path. """
-        # Find the closest path point to current position and reset to there
         min_dist = float('inf')
         closest_idx = 0
 
-        for i in range(len(self.path)):
-            px, py = self.path[i]
+        for i, (px, py) in enumerate(self.path):
             dist = math.hypot(px - self.x, py - self.y)
             if dist < min_dist:
                 min_dist = dist
                 closest_idx = i
 
-        # Reset to closest path point
         self.x, self.y = self.path[closest_idx]
         self.index = closest_idx + 1 if closest_idx + 1 < len(self.path) else closest_idx
 
     def get_enemy_hp(self):
         """ Returns the enemy's health. """
         return self.enemy_hp
-    
+
     def decrease_enemy_hp(self, amount):
         """ Decreases the enemy's health by the given amount. """
         self.enemy_hp -= amount

@@ -22,3 +22,5 @@ poetry run invoke start
  - Rakennukset maksaa rahaa, jota saa tuhoamalla vihollisia.
  - Jos vihollinen pääsee kartan läpi, menetät elämiä.
  - Pelin tarkoitus on selvitä mahdollisimman pitkälle.
+
+ - src/config/settings.py tiedostosta voi halutessaan säätää asetuksia.

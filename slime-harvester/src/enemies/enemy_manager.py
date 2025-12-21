@@ -46,6 +46,6 @@ class EnemyManager:
             enemy.decrease_enemy_hp(1)
         else:
             if enemy.enemy_type["next_type"] == 0:
-                    self.remove(enemy)
+                self.remove(enemy)
             else:
                 enemy.swap_enemy_type(self.enemy_config[enemy.enemy_type["next_type"]])
