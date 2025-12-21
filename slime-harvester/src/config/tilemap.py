@@ -20,6 +20,7 @@ class TileMap:
             'K': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "path_downleft.png")),
             'L': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "path_downright.png")),
             '.': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "grass.png")),
+            ',': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "grass_bush.png")),
             'S': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "spawn_portal.png")),
             'B': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "border.png")),
             'Q': pygame.image.load(os.path.join(base_dir, "..", "assets", "tiles", "ui_bg_tl.png")),
@@ -59,7 +60,7 @@ class TileMap:
             return False
 
         tile = self.map_data[tile_y][tile_x]
-        if tile in ['#', '.']:
+        if tile in ["#", ".", ","]:
             return True
 
         return False

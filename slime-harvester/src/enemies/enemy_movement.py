@@ -22,6 +22,8 @@ class Enemy:
         path = os.path.join("..", "assets", "enemies", self.enemy_image)
         full_path = os.path.join(self.base_dir, path)
         self.image = pygame.image.load(full_path)
+        if enemy_type["name"] == "boss_rainbow":
+            self.image = pygame.transform.scale(self.image, (64, 64))
         self.rect = self.image.get_rect(center=(self.x, self.y))
         self.enemy_type = enemy_type
         self.enemy_hp = enemy_type["health"]
@@ -66,6 +68,26 @@ class Enemy:
         self.image = pygame.image.load(full_path)
         self.enemy_type = new_enemy_type
         self.speed = new_enemy_type["enemy_speed"]
+        self.enemy_hp = new_enemy_type["health"]
+        self.reset_to_path()
+        self.rect = self.image.get_rect(center=(self.x, self.y))
+
+    def reset_to_path(self):
+        """ Resets the enemy's position to the closest point on the path. """
+        # Find the closest path point to current position and reset to there
+        min_dist = float('inf')
+        closest_idx = 0
+
+        for i in range(len(self.path)):
+            px, py = self.path[i]
+            dist = math.hypot(px - self.x, py - self.y)
+            if dist < min_dist:
+                min_dist = dist
+                closest_idx = i
+
+        # Reset to closest path point
+        self.x, self.y = self.path[closest_idx]
+        self.index = closest_idx + 1 if closest_idx + 1 < len(self.path) else closest_idx
 
     def get_enemy_hp(self):
         """ Returns the enemy's health. """
