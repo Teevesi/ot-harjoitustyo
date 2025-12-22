@@ -24,9 +24,9 @@ DIRECTION_VECTORS = {
 
 TOWER_CONFIG = {
     "Tower1": {"projectile":"projectiles/projectile1.png",
-            "damage":1, "range":800, "fire_rate":40, "price":30, "projectile_speed":3},
+            "damage":1, "range":700, "fire_rate":45, "price":40, "projectile_speed":3},
     "Tower2": {"projectile":"projectiles/projectile2.png",
-            "damage":1, "range":100, "fire_rate":90, "price":80, "projectile_speed":5}
+            "damage":1, "range":100, "fire_rate":90, "price":100, "projectile_speed":5}
 }
 
 ENEMY_CONFIG = {
@@ -61,7 +61,7 @@ ENEMY_CONFIG = {
                 "enemy_image": "enemy_boss_rainbow.png",
                 "next_type": "pink_slime"},
     "boss_skull": {"name": "boss_skull",
-                "health": 20,
+                "health": 200,
                 "enemy_speed": 1,
                 "enemy_image": "enemy_boss_skull.png",
                 "next_type": "boss_rainbow"}

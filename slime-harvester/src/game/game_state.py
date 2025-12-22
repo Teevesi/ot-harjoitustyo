@@ -87,7 +87,7 @@ class GameState: # pylint: disable=too-many-instance-attributes
                 if projectile.rect.colliderect(enemy.rect):
                     self.enemy_manager.get_enemy_hit_action(enemy)
                     to_remove.append(projectile)
-                    currency_multiplier = max(1 - self.wave_manager.current_wave / 60, 0.1)
+                    currency_multiplier = max(1 - self.wave_manager.current_wave / 50, 0.1)
                     self.currency.increase(currency_multiplier)
                     break
 
