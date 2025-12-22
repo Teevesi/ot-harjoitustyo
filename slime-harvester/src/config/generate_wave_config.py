@@ -4,13 +4,6 @@ def generate_wave_config(max_wave=50):
 
     for wave in range(1, max_wave + 1):
         # Boss waves every 10th wave after wave 10
-        if wave == 1:
-            wave_config[wave] = {
-                "enemy_count": 1,
-                "spawn_interval": 20,
-                "enemy_type": "boss_skull"
-            }
-            continue
         if wave % 10 == 0:
             wave_config[wave] = boss_wave(wave)
             continue
